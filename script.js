@@ -1,66 +1,83 @@
-var picture = document.GetElementById["picture"]
-var console = document.GetElementById["console"]
-var options = document.GetElementById["options"]
-var inventory = document.GetElementById["inventory"]
-var places = document.GetElementById["places"]
+var picture
+var console
+var options
+var inventory
+var places
 
 function tool(name){
 	this.name = name;
-	this.body = "";
+	this.body = name;
 	this.descripion = "";
 	this.owned = False;
 };
 
-var tools = {
-};
+function optionc(name){
+	this.name = name;
+	this.body = name;
+}
+
+var tools = {};
+var sites = {};
 
 function site(name){
 	this.name = name;
-	this.body = "";
-	this.description = ""
+	this.body = name;
+	this.description = "";
 	this.img = "";
 	this.options = [];
 	this.vars = {};
-	this.reachable = False;
+	this.reachable = false;
+	sites[name] = this
 };
 
 site.prototype.usetool = function(tool){
 }
-
+site.prototype.addOption = function(option){
+	this.options.push(option)
+}
 site.prototype.show = function(){
 	picture.innerHTML = "<div>" + this.name + "</div><img src='" + this.img + "'/>";
 	ostr = "";
-	for (var o in this.options){
+	for (var o of this.options){
 		ostr += o.body;
 	}
 	options.innerHTML = ostr;
 	console.innerHTML = this.description;
 }
 
-var sites = {
-};
-
 function refresh_ui(site){
 	sstr = "";
 	for (var s in sites){
-		if s.reachable{
-			sstr = s.body
+		if (sites[s].reachable){
+			sstr = sites[s].body
 		}
 	}
 	places.innerHTML = sstr;
 	tstr = "";
 	for (var t in tools){
-		if t.ownes{
-			tstr = t.body
+		if (tools[t].owned){
+			tstr = tools[t].body
 		}
 	}
 	inventory.innerHTML = sstr;
-	if not(site)
+	if (!site){
 		site = sites["start"]
 	}
 	site.show()
 }
 
 function start(){
+	picture = document.getElementById("picture")
+	console = document.getElementById("console")
+	options = document.getElementById("options")
+	inventory = document.getElementById("inventory")
+	places = document.getElementById("places")
 	refresh_ui();
 }
+
+var startsite = new site("start")
+
+startsite.reachable = true
+startsite.img  = "images/arok.jpg"
+startsite.description  = "helló világ"
+startsite.addOption(new optionc("hello"))
