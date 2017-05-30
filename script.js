@@ -4,24 +4,50 @@ var options
 var inventory
 var places
 
-function tool(name){
-	this.name = name;
-	this.body = name;
-	this.descripion = "";
-	this.owned = False;
-};
-
-function optionc(name){
-	this.name = name;
-	this.body = name;
-}
-
 var tools = {};
 var sites = {};
 
-function site(name){
+
+function clearchildren(node){
+	while (node.firstChild) {
+		node.removeChild(node.firstChild);
+	}
+}
+
+function createButton(html, cssclass){
+	var iDiv = document.createElement('div');
+	iDiv.innerHTML = html;
+	iDiv.className = cssclass;
+	return iDiv;
+}
+
+function Clickable(name, cstyle){
 	this.name = name;
-	this.body = name;
+	this.button = null;
+	this.cstyle = cstyle;
+	this.setbutton(name);
+}
+Clickable.prototype.setbutton = function(html){
+	this.button = createButton(html, this.cstyle);
+}
+
+function Tool(name){
+	Clickable.call(this, name, "toolbutton");
+	this.descripion = "";
+	this.owned = False;
+	tools[name] = this;
+};
+Tool.prototype = Object.create( Clickable.prototype );
+
+function Optionc(name, owner, action){
+	Clickable.call(this, name, "optionbutton");
+	this.owner = owner;
+	this.action = action;
+}
+Optionc.prototype = Object.create( Clickable.prototype );
+
+function Site(name){
+	Clickable.call(this, name, "sitebutton")
 	this.description = "";
 	this.img = "";
 	this.options = [];
@@ -29,41 +55,43 @@ function site(name){
 	this.reachable = false;
 	sites[name] = this
 };
-
-site.prototype.usetool = function(tool){
+Site.prototype = Object.create( Clickable.prototype );
+Site.prototype.usetool = function(tool){
 }
-site.prototype.addOption = function(option){
-	this.options.push(option)
+Site.prototype.addOption = function(name, action){
+	this.options.push(new Optionc(name, this, action))
 }
-site.prototype.show = function(){
+Site.prototype.show = function(){
 	picture.innerHTML = "<div>" + this.name + "</div><img src='" + this.img + "'/>";
 	ostr = "";
 	for (var o of this.options){
-		ostr += o.body;
+		options.appendChild(o.button)
 	}
 	options.innerHTML = ostr;
 	console.innerHTML = this.description;
 }
 
 function refresh_ui(site){
-	sstr = "";
+	clearchildren(sites)
 	for (var s in sites){
 		if (sites[s].reachable){
-			sstr = sites[s].body
+			places.appendChild(sites[s].button)
 		}
 	}
-	places.innerHTML = sstr;
-	tstr = "";
+	clearchildren(tools)
 	for (var t in tools){
 		if (tools[t].owned){
-			tstr = tools[t].body
+			tool.appendChild(tools[t].button)
 		}
 	}
-	inventory.innerHTML = sstr;
 	if (!site){
 		site = sites["start"]
 	}
 	site.show()
+}
+
+function printc(text){
+	console.innerHTML += "<div>"+text+"</div>";
 }
 
 function start(){
@@ -75,9 +103,9 @@ function start(){
 	refresh_ui();
 }
 
-var startsite = new site("start")
+var startsite = new Site("start")
 
 startsite.reachable = true
 startsite.img  = "images/arok.jpg"
 startsite.description  = "helló világ"
-startsite.addOption(new optionc("hello"))
+startsite.addOption("hello", function(){})
