@@ -18,6 +18,7 @@ function createButton(html, cssclass){
 	var iDiv = document.createElement('div');
 	iDiv.innerHTML = html;
 	iDiv.className = cssclass;
+	iDiv.style.cursor = "pointer"
 	return iDiv;
 }
 
@@ -56,18 +57,21 @@ function Site(name){
 	sites[name] = this
 };
 Site.prototype = Object.create( Clickable.prototype );
+
 Site.prototype.usetool = function(tool){
 }
+
 Site.prototype.addOption = function(name, action){
-	this.options.push(new Optionc(name, this, action))
+	o = new Optionc(name, this, action);
+	o.button.onclick = action;
+	this.options.push(o);
 }
+
 Site.prototype.show = function(){
 	picture.innerHTML = "<div>" + this.name + "</div><img src='" + this.img + "'/>";
-	ostr = "";
 	for (var o of this.options){
 		options.appendChild(o.button)
 	}
-	options.innerHTML = ostr;
 	console.innerHTML = this.description;
 }
 
@@ -108,4 +112,4 @@ var startsite = new Site("start")
 startsite.reachable = true
 startsite.img  = "images/arok.jpg"
 startsite.description  = "helló világ"
-startsite.addOption("hello", function(){})
+startsite.addOption("bumm", function(){printc("bummaa");})
