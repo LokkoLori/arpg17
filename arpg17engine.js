@@ -61,7 +61,7 @@ function Site(name){
 	sites[name] = this
 	var ethis = this
 	this.button.onclick = function(){
-		refresh_ui(ethis);
+		refresh(ethis);
 	}
 	this.toolrelays = []
 	
@@ -90,7 +90,7 @@ Site.prototype.usetool = function(tool){
 };
 
 Site.prototype.show = function(){
-	picture.innerHTML = "<div>" + this.name + "</div><img src='" + this.img + "'/>";
+	picture.innerHTML = "<img src='" + this.img + "'/>";
 	clearchildren(options);
 	for (var o of this.options){
 		options.appendChild(o.button);
@@ -101,7 +101,7 @@ Site.prototype.show = function(){
 
 var actsite = null;
 
-function refresh_ui(site){
+function refresh(site){
 	if (!site){
 		if (actsite){
 			site = actsite;
@@ -134,33 +134,5 @@ function start(){
 	options = document.getElementById("options");
 	inventory = document.getElementById("inventory");
 	places = document.getElementById("places");
-	refresh_ui();
+	refresh();
 };
-
-var startsite = new Site("start");
-
-startsite.reachable = true;
-startsite.description  = "helló világ";
-startsite.addOption("bumm1", function(){printc(this.name);});
-startsite.addOption("bumm2", function(){printc(this.name);});
-
-var seconds = new Site("second");
-
-seconds.reachable = true;
-seconds.description  = "helló második világ";
-seconds.addOption("nyit", function(){
-	thirds.reachable = true;
-	refresh_ui();
-});
-
-newlontool = new Tool("newlontool");
-newlontool.owned = true;
-
-var thirds = new Site("third");
-
-thirds.reachable = false;
-thirds.description  = "helló haradik világ";
-
-thirds.addToolRelay("newlontool", function(){
-	printc("nem, a nyúl az!");
-});
