@@ -61,7 +61,7 @@ function Site(name){
 	sites[name] = this
 	var ethis = this
 	this.button.onclick = function(){
-		ethis.show()
+		refresh_ui(ethis);
 	}
 	this.toolrelays = []
 	
@@ -91,7 +91,7 @@ Site.prototype.usetool = function(tool){
 
 Site.prototype.show = function(){
 	picture.innerHTML = "<div>" + this.name + "</div><img src='" + this.img + "'/>";
-	options.clearchildren();
+	clearchildren(options);
 	for (var o of this.options){
 		options.appendChild(o.button);
 	}
