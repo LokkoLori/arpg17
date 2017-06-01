@@ -3,7 +3,12 @@
 	height: 100%;
 }
 
-div {
+.layouter{
+	border-style: solid;
+	margin: 5px;
+}
+
+.optionbutton{
 	border-style: solid;
 	margin: 5px;
 }
@@ -16,35 +21,28 @@ div {
 	height: 400px;
 }
 
-#console{
-	position: absolute;
-	top: 400px;
-	left: 0px;
-	width: 600px;
-	height: 200px;
-	overflow-x: hidden;
-}
-
-#options{
+#desc{
 	position: absolute;
 	top: 0px;
 	left: 600px;
-	width: 400px;
-	height: 300px;
-}
-
-#inventory{
-	position: absolute;
-	top: 300px;
-	left: 600px;
-	width: 200px;
-	height: 300px;
+	width: 380px;
+	height: 580px;
+	padding: 10px;
+	overflow-x: hidden;
 }
 
 #places{
 	position: absolute;
-	top: 300px;
-	left: 800px;
-	width: 200px;
-	height: 300px;
+	top: 400px;
+	left: 0px;
+	width: 300px;
+	height: 200px;
+}
+
+#inventory{
+	position: absolute;
+	top: 400px;
+	left: 300px;
+	width: 300px;
+	height: 200px;
 }
