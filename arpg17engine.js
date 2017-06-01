@@ -124,6 +124,10 @@ function refresh(site){
 	site.show();
 }
 
+function jump(site){
+	refresh(site);
+}
+
 function printc(text){
 	console.innerHTML += "<div>"+text+"</div>";
 };

@@ -22,7 +22,7 @@ div {
 	left: 0px;
 	width: 600px;
 	height: 200px;
-	overflow: scroll;
+	overflow-x: hidden;
 }
 
 #options{
