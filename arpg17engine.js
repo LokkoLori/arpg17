@@ -44,8 +44,9 @@ function Tool(name){
 };
 Tool.prototype = Object.create( Clickable.prototype );
 
-function Optionc(name, owner, action){
-	Clickable.call(this, name, "optionbutton");
+function Optionc(name, owner, action, num){
+	code = '<table><tr><td><img src="design/'+num+'button.png"/></td><td valign="center"><b>' + name + '</b></td></tr></table>'
+	Clickable.call(this, code, "optionbutton");
 	this.owner = owner;
 	this.action = action;
 };
@@ -54,7 +55,7 @@ Optionc.prototype = Object.create( Clickable.prototype );
 function Site(name){
 	Clickable.call(this, name, "sitebutton")
 	this.description = "";
-	this.img = "images/"+name+".jpg";
+	this.img = "images/"+name+".png";
 	this.options = [];
 	this.vars = {};
 	this.reachable = false;
@@ -70,7 +71,7 @@ Site.prototype = Object.create( Clickable.prototype );
 
 
 Site.prototype.addOption = function(name, action){
-	o = new Optionc(name, this, action);
+	o = new Optionc(name, this, action, this.options.length);
 	o.button.onclick = action;
 	this.options.push(o);
 };
