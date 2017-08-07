@@ -1,3 +1,43 @@
+body{
+	background-color: #d1eaff;
+}
+
+#header{
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: #4c858a;
+	background-image: url("design/pattern.png");
+	padding: 0px;
+	width: 90%;
+	margin: auto;
+}
+
+#headerfade{
+	width: 100%;
+	height: 80px;
+	background-image: url("design/fade.png");
+	background-repeat: repeat-x;
+	text-align: right;
+}
+
+#headerlogo{
+	width: 381px;
+	height: 124px;
+	background-image: url("design/maniacarok.png");
+	float: right;
+	position: relative;
+	top: -80px;
+	left: 110px;
+}
+
+#contentback {
+	background-color: #e1f2ff;
+	width: 800px;
+	height: 100%;
+	margin: auto;
+}
+
+
 #picture img{
 	width: 100%;
 	height: 100%;
