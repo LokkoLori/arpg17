@@ -61,6 +61,7 @@ function Site(name){
 	this.options = [];
 	this.vars = {};
 	this.reachable = false;
+	this.openAction = function(){};
 	sites[name] = this
 	var ethis = this
 	this.button.onclick = function(){
@@ -76,6 +77,14 @@ Site.prototype.addOption = function(name, action){
 	o = new Optionc(name, this, action, this.options.length);
 	o.button.onclick = action;
 	this.options.push(o);
+	return o;
+};
+
+Site.prototype.removeOption = function(optionobj){
+	var index = this.options.indexOf(optionobj);
+	if (index > -1){
+		this.options.splice(index, 1);
+	}
 };
 
 Site.prototype.addToolRelay = function(toolname, action) {
@@ -104,6 +113,8 @@ Site.prototype.show = function(){
 	}
 	sitedescription.innerHTML = this.description;
 	actsite = this;
+	this.openAction()
+	this.openAction = function(){};
 };
 
 var actsite = null;
