@@ -17,7 +17,7 @@ site3.addOption("leszarod", function(){
 	jump(site5);
 });
 
-sip = new Tool("síp");
+sip = new Tool("rendőrsíp");
 var site4 = new Site("site4");
 site4.description = "<p>Kiülsz a kocsi ablakába míg egyik lábaddal a kormányt irányítod. Csináltál már ennél cifrább dolgokat is. Előrehajolsz és a vérmaszatból kihazlászod a sípot.</p>";
 site4.addOption("yeah!", function(){
@@ -77,13 +77,14 @@ site8.addOption("Nyugisan vezetsz tovább", function(){
 
 site9 = new Site("site9");
 site9.description = "<p>Addig keresgéled a rőzsét a zsebedben, hogy felcsavarodsz egy fára ! Látod te fasz, ne drogozz vagy legalábbis ne vezetés közben! Meghaltál paraszt, kezd újra, ha ráérsz !<p>";
+site9.deadend = true;
 
 site10 = new Site("site10");
 site10.description = "<p>Nincs turbód te barom, ez nem egy autós játék. Vegyél nascart paraszt !</p>";
+site10.deadend = true;
 
 site11 = new Site("site11");
 site11.description = "<p>Ajkarendek . Végre megérkeztél ! Vidáman száguldasz el a szétlőtt várostábla mellett, aminek tövében valami harisnyás kurva fekszik. A táblán felirat :Lakosság 5 fő. Árok party idején 174 fő. A GPSed szerint megérkeztél. előtted egy iskola udvara, mellette egy bolt.  A bejárat mellett egy limonádéárust veszel észre a következő felirattal : Még 2431 limonádét kell eladnom, hogy bejussak a bulira. Az árus valami csöves fejű tag István a király pólóban. Na mi van Koppánykám, tarhálgatunk ? - szólítod meg barátságosan. A csapzott csöves rádmosolyog, ekkor látod, hogy hiányzik pár foga.</p><p><b>Mit teszel ?</b></p> ";
-
 site11.addOption("beugrasz a boltba vásárolni", function(){
 	jump(site14);
 });
@@ -119,7 +120,7 @@ site13.addOption("Áuu", function(){
 
 site14 = new Site("site14");
 site14.description = "<p>Udvariasan előreengedsz egy csótányt, majd belépsz a kissé söröshamburger szagú helyiségbe. Rögtön kiszúrod a pult mögött serénykedő bombázót, majd rájössz, hogy otthon hagytad a pilótaengedélyedet, így a mosóporos dobozokat kezded nézegetni letörten. Tomi, Omo, Ariel. Á, a kis hableány ! Vajon hogy nézne ki, ha a feje lenne hal és az alsó teste nő? Vajon ugyanolyan népszerű lenne ? Mindenesetre te szívesen úsznál vele egyet.</p><p>Idiotisztikus merengésedből hirtelen egy kiáltás ráz fel, majd valaki durván félrelök. Látod, hogy a bombázó cickói egy szaladó férfira mutatnak. Tolvaj, kapják el ! Kit érdekel- gondolod és gyorsan egy marék mosóport csúsztatsz a gatyád zsebébe, amíg nem figyelnek rád. Így legalább az izzadtság majd magától kimossa és le se kell venni. Majd mégis feltámad a lelkiismereted hiánya és arra gondolsz, hogy valami tárgyat használhatnál itt, hisz valószínűleg ennek a hülye játéknak amit játszol ez a lényege.</p><p>Bizonyos tárgyakat csak a megfelelő helyen és időben tudsz használni és csak így tudsz továbbjutni ! Ezért próbálkozz mindig a tárgyakkal is, hátha történik valami ! Ezzel túl is estél az első tanító részen ! Gratulálok kedves játékos !</p>";
-site14.addToolRelay("síp", function(){
+site14.addToolRelay("rendőrsíp", function(){
 	jump(site17);
 });
 site14.addOption("Nem teszel semmit, egyszerűen kisétálsz az üzletből", function(){
@@ -127,8 +128,76 @@ site14.addOption("Nem teszel semmit, egyszerűen kisétálsz az üzletből", fun
 });
 
 site15 = new Site("site15");
-site15.description = "<p>Lécci lécci havercsávó, vegyél már egy limonádét, hadd jussak be én is - kérlel a limonádéárus csöves és erőszakosan elédvág egy kancsó húgyszínű itallal.</p>"
+site15.description = "<p>Lécci lécci havercsávó, vegyél már egy limonádét, hadd jussak be én is - kérlel a limonádéárus csöves és erőszakosan elédvág egy kancsó húgyszínű itallal.</p>";
 site15.addOption("bazdmeg!", function(){
 	site11.removeOption(site11_c);
 	jump(site11);
 });
+
+site16 = new Site("site16");
+site16.description = "<p>Kerékcsikorgást hallasz amint kilépsz a Tahó stopból és már nincs időd félreugrani, meg amúgy sem akarsz, mert kissé suicid alkat vagy és ez a játék is elég szar. A tolvaj átgázolt rajtad szűzpiros ferrarijával. ( Na persze, mert akinek ferrarija van az itt fog lopni a Tahó stopban, ezt a hülye játékot. ) Majd meghalsz !</p><p> Fantasztikus kalandod itt véget ért és mi készítők ezt egyáltalán nem sajnáljuk !</p>";
+site16.deadend = true;
+
+site17 = new Site("site17");
+site17.description = "<p>Belefújsz a rebdőrsípba, mire a limonádéárus a tolvaj elé veti magát. Összegabalyodnak és elgurulnak egy lejtőn egy káromkodó porfelhőben.</p>";
+site17.addOption("összetöröd a limonádéárus standját.", function(){
+	jump(site18);
+});
+site17.addOption("bemész a táborba", function(){
+	jump(site15);
+});
+
+
+var budikulcs = new Tool("budikulcs"); 
+site18 = new Site("site18");
+site18.description = "<p>Most megkapod te geci !- kiáltod és ripityára töröd a hülye limonádés állványt. Az üvegek széttörnek, a lötyi a csatornába ömlik, a kiskocsi kerekeit kivagdosod. Elégedetten és felszabadultan röhögsz egyet a pusztításod láttán. Ha minden ilyen egyszerű lenne ! A széttört poharak között egy budikulcsot veszel észre. </p><p>Mi a kurva isten történt ?- kiáltja a visszatérő István a király pólós csöves.<br/>No, no- Koppánykám, ne szidjuk az Istent- válaszolod neki.<br/>Szomorúan fogja a romokat, majd odébb áll. Szabad az út a táborba !</p>";
+site18.openAction = function(){
+	budikulcs.owned = true;
+	refresh();
+};
+site18.addOption("irány a tábor", function(){
+	jump(site22);
+});
+
+var openfield = function(){
+	sites["PARKOLÓ"].reachable = true;
+	sites["SZÍNPAD"].reachable = true;
+	sites["ZENESÁTOR"].reachable = true;
+	sites["FOCIPÁLYA"].reachable = true;
+	sites["TUSOLÓK"].reachable = true;
+	sites["TORNATEREM"].reachable = true;
+	refresh();
+}
+
+var closefiled = function(){
+	sites["PARKOLÓ"].reachable = false;
+	sites["SZÍNPAD"].reachable = false;
+	sites["ZENESÁTOR"].reachable = false;
+	sites["FOCIPÁLYA"].reachable = false;
+	sites["TUSOLÓK"].reachable = false;
+	sites["TORNATEREM"].reachable = false;
+	refresh();
+}
+
+site22 = new Site("PARKOLÓ");
+site22.description = "<p>A parkolóban vagy. Ide hallatszik a tábor jövés-menése, zsongása. Táborozók pakolják ki-be cuccaikat az autókból. Érdeklődve pillantasz az egyik rendszámtáblára : JCVD ! Hmm ez már ismerős az útról, ez a barom száguldott el melletted. Az egyik autó alól viszont pár lábat látsz kikandikálni. Valószínűleg valaki ráhajtott a parkolóban beszélgetőkre. Innen könnyen megközelítheted a tábor többi helyszínét, valamint egy ajtó is nyílik a neked jobbra eső épületen, mely úgy tűnik nyitva lehet. Az épület tetején egy barátságis kiscica ugrándozik.</p>";
+site22.openAction = openfield
+
+site40 = new Site("SZÍNPAD");
+site40.description = "<p>Kisétálsz a központi épület mögé, ahol a hátsó falhoz egy színpad kapcsolódik. A színpadon szétszórva egy-két hangláda és hangszer pihen. Valószínűleg itt buli lesz este ! Már a gondolatra is megszomjazol ! Az egyik erősítőn valaki üldögél, arca a kezeibe temetve és mintha sírna. A színpad oldalában pedig egy furcsa kis ajtót látsz. Néhány ajkai polgár is lézeng a színpad környékén, akik valószínűleg az esti koncertekre kíváncsiak.Az épület tetején, a színpad felett egy rozsdás szélkakas nyikorog. Furcsa hűvös szél árad a fák felől. Érzed, hogy valami készül, valamilyen rossz akarat lebeg a hely felett. Érzed, hogy valami történni fog mikor leszáll az est, de az még odébb van.</p><p><b>Mit teszel?</b></p>";
+
+site55 = new Site("ZENESÁTOR");
+site55.description = "<p>Egy igénytelen, szakadtas katonai sátor közelébe érsz. Körülötte és benne padok és asztalok szanaszét. Az asztalok csordultig vannak sörösdobozokkal, borosüvegekkel, rögtönzött hamutartókkal és mindenféle szeméttel. Jópáran üldögélnek itt és úgy tűnik nem most kezdték a piálást. Üvöltözve röhögcsélnek és bárgyú történeteket mesélnek. A sátor hátsó sarkában különböző zenecuccokat látsz, meg egy rakat CD-t. Az egész sátrat és környékét betölti a dübörgő metál zene. Valaki a sátor mögött a saját hányásában fekszik és egy kissrácot is látsz rohangálni vízipisztollyal. Idelátszik a focipálya és a tornaterem főbejárata.</p>";
+
+site75 = new Site("FOCIPÁLYA");
+site75.description = "<p>A focipályán fekszenek néhányan akik a hőségtől szívinfarktust kaptak, egyébként a terep elég elhagyatottnak tűnik.  Hortyogás üti meg a füled és egy dagadt kékzöld macskamackó szerű pokémont veszel észre az egyik fa alatt szundítani. Snorlax az ! Tőle nem messze vakondtúrásokat látsz, az egyik kapuban pedig egy leeresztett futball labdát.</p>";
+
+site100 = new Site("TUSOLÓK");
+site100.description = "<p>Egy elhagyatott mellékszárny előtt állsz. A falak romosak, az ablakok néhol betörve, de mindenhol rács. Kísérteties fény szűrődik ki. A falon egy graffitit látsz : Az Árok egy szar.. felirattal. Előtted egy ajtó, megpróbálod, de zárva van. A bokorban viszont mintha mocorogna valami.</p>";
+
+site120 = new Site("TORNATEREM");
+site120.description = "<p>Besétálsz az Árok party fő helyiségébe. A tornaterem tömve van asztalokkal, melyeket C64ek, Amigák és különböző retrokütyük borítanak, az egész egy kábeldzsungel. Szemben a kisszínpad felett egy kivetítő van, amin valami retro játékverseny folyik. Alatta az egyik sarokban pedig Elvira a 2017-es év házigazdanője feszít szokásosan elragadó, csábós, testhezálló , combnál felhasított fekete gönceiben és harisnyában, óriási dekoltázzsal párosítva hozzá való dinnyékkel. Épp egy interjú előtt van valakivel és a részleteket beszélik meg. A hozzád közeli sarokban egy hűtőt veszel észre. Komoly számítógépezés is folyik, egy joystickot, klaviatúrát püfölő figura hívja fel a figyelmed, valamint egy óriási agy előtt kuporgó zseni kinézetű programozó.</p>";
+
+
+
+
