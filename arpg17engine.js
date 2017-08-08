@@ -62,6 +62,7 @@ function Site(name){
 	this.vars = {};
 	this.reachable = false;
 	this.openAction = function(){};
+	this.closeAction = function(){};
 	this.deadend = false;
 	sites[name] = this
 	var ethis = this
@@ -114,9 +115,6 @@ Site.prototype.show = function(){
 	}
 	sitedescription.innerHTML = this.description;
 	actsite = this;
-	action = this.openAction
-	this.openAction = function(){};
-	action()
 };
 
 var actsite = null;
@@ -126,8 +124,14 @@ function refresh(site){
 		if (actsite){
 			site = actsite;
 		} else {
-			site = sites["PARKOLÓ"];
+			site = sites["start"];
 		}
+	}
+	if (actsite != site){
+		if (actsite) {
+			actsite.closeAction();
+		}
+		site.openAction();
 	}
 	clearchildren(places);
 	for (var s in sites){
