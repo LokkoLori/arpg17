@@ -110,6 +110,7 @@ Site.prototype.usetool = function(tool){
 Site.prototype.show = function(){
 	picture.innerHTML = "<img src='" + this.img + "'/>";
 	clearchildren(options);
+	clearchildren(console);
 	for (var o of this.options){
 		options.appendChild(o.button);
 	}
