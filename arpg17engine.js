@@ -1,5 +1,6 @@
 var picture
 var console
+var sitedescription
 var options
 var inventory
 var places
@@ -36,6 +37,7 @@ function Tool(name){
 	Clickable.call(this, name, "toolbutton");
 	this.descripion = "";
 	this.owned = false;
+	this.defaction = false;
 	tools[name] = this;
 	var ethis = this;
 	this.button.onclick = function(){
@@ -87,7 +89,11 @@ Site.prototype.usetool = function(tool){
 			return;
 		}
 	}
-	printc(tool.name + " itt nem használható");
+	if (tool.defaction){
+		tool.defaction()
+	} else {
+		printc(tool.name + " itt nem használható");
+	}
 };
 
 Site.prototype.show = function(){
@@ -96,7 +102,7 @@ Site.prototype.show = function(){
 	for (var o of this.options){
 		options.appendChild(o.button);
 	}
-	console.innerHTML = this.description;
+	sitedescription.innerHTML = this.description;
 	actsite = this;
 };
 
@@ -136,6 +142,7 @@ function printc(text){
 function start(){
 	picture = document.getElementById("picture");
 	console = document.getElementById("console");
+	sitedescription = document.getElementById("sitedescription");
 	options = document.getElementById("options");
 	inventory = document.getElementById("inventory");
 	places = document.getElementById("places");

@@ -69,14 +69,20 @@ body{
 
 #places{
 	top: 400px;
-	left: 0px;
+	left: 600px;
 	width: 300px;
-	height: 200px;
+	position: absolute;
 }
 
 #inventory{
-	top: 400px;
-	left: 300px;
+	top: 0px;
+	left: 600px;
 	width: 300px;
-	height: 200px;
+	height: 400px;
+	padding: 20px;
+	position: absolute;
+}
+
+#picture img{
+	image-rendering: pixelated;
 }
