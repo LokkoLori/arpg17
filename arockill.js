@@ -499,10 +499,86 @@ site60.addOption("Beletaposod a fejét a sárba", function(){
 site60.addOption("Átkutatod", function(){
 	jump(site70);
 });
-site60,addOption("Visszatérsz nézelődni a sátor elé", function(){
+site60.addOption("Visszatérsz nézelődni a sátor elé", function(){
 	jump(site55);
 });
 
+
+site62 = new Site("site62");
+site62.description = "<p>Az elszívott cigicsikkeket beledobálod egy befőttesüvegnyi lébe, majd kicsit ázni hagyod. Kész is a dobi ! Jó ízzel nekilátsz az elfogyasztásának és érzed, hogy rohadtul felpörögsz a sárgás, nikotinos löttytől. Elkezdesz őrjöngeni és átmész berserker módba. Szétütsz egy asztalt, amiről a piák szanaszét repülnek, majd szaggatni kezded a sátrat.<br/>Hé nyugodj már le ! - szól rád valaki.</p>";
+site62.addOption("Szót fogadsz és lenyugszol", function(){
+	jump(site55);
+});
+site62.addOption("hagyod dolgozni a dobit és tovább őrjöngesz", function(){
+	jump(site63);
+});
+
+site63 = new Site("site63");
+site63.description = "<p>Hirtelen megjelenik Jean-Claude Van Damme és kirúgja a lábad, majd a fejedet beletapossa a sárba. <br/>- Gyere csicska ! - kiáltja és az egyik lábát a levegőbe emeli.</p><p>Szóval ezért volt annyira ismerős a JCVD rendszám, az ő autóját láttad !</p>";
+site63.addOption("Harcolsz vele", function(){
+	jump(site64);
+});
+site63.addOption("Meghunyászkodsz és visszatérsz nézelődni", function(){
+	jump(site55);
+});
+
+site64 = new Site("site64");
+site64.description = "<p>- Gyere csicska, széthasítom a fejed, mint a dinnyét ! - Rárúgsz a lábára, mire fordulatból megpróbál lábat söpörni. Te felugrasz előle egy asztalra és feléhajítasz 3 sörösüveget. Kettő elől félrehajol, de a harmadik telibekapja. Vérzik az arca és vicsorog.<br/>- Tirpák geci ! - kiáltja és mint a tigris rugaszkodik feléd. Elkapja a lábaid és bukfencben levisz az asztalról. Valaki felsikít. Jean-Claude megpróbálja leharapni a füled, mire te a nyakát téped a fogaiddal.<br/>- Öööee, te vérgödény ! - prüszkölöd és egy adag hányadékos vért köpsz az arcába.<br/>- Add fel digóóó !- hörgi utolsó erejével.</p>";
+site64.addOption("Feladod", function(){
+	jump(site65);
+});
+site64.addOption("Leszakítod a tökeit", function(){
+	jump(site66);
+});
+
+var antennaskapcsolo = new Tool("antennás kapcsoló");
+site65 = new Site("site65");
+site65.description = "<p>Feladom ! - nyöszörgöd és JCVD lepattan rólad. Jól van barátom, nagy harcos vagy, de tudod hol a határ ! Meghajol előtted és csinál valami hülye harcművészeti köszönést.<br/>- Ezennel meghívlak téged a titkos mesterek tornájára, mely ezen tábor alatt van egy titkos helyen. - ezzel átnyújt neked egy kis antennás kapcsolót. Ezt használd a megfelelő helyen ! - mondja és elhátrabukfencezik.</p>";
+site65.addOption("Fakkyeah!", function(){
+	antennaskapcsolo.owned = true;
+	site55.removeOption(site55o_c);
+	jump(site55);
+});
+
+site66 = new Site("site66");
+site66.description = "<p>Rámarkolsz a golyókra és leszakítod. Ekkor JCVD szétrobban. Egy önmegsemmisítő volt beépítve a heréibe ! A robbanás téged és az egész Árok partit is miszlikbe szakítja.</p><p>Kalandod egy füstfelhő kíséretében véget ért !</p>";
+site66.deadend = true;
+
+site67 = new Site("site67");
+site67.description = "<p>- Júdea papja vagyok ! - mondja a furcsa dj. - És nem érdekel a mondanivalód  !...</p>";
+site67.addOption("Csalódottan térsz vissza a sátor elé.", function(){
+	jump(site55);
+});
+site67.addToolRelay("kiscica", function(){
+	kiscica.owned = false;
+	jump(site68);
+});
+
+site68 = new Site("site68");
+site68.description = "<p>Elengeded az aranyos kiscicát, hogy játszadozzon. A macsek felugrik az asztalra és elkezdi borítgatni a felszerelést. A dj riadtan kiabál és próbálja elhajkurászni az állatot. Azonban az egyik CD-je lecsússzan a kupacból, gyorsan zsebre teszed. Egy Erika C64 lemez az !</p>";
+site68.addOption("fakkyeah!", function(){
+	erikac64cdje.owned = true;
+	jump(site55);
+});
+
+
+site69 = new Site("site69");
+site69.description = "<p>Kicsit ráállsz a fejére és az arcát a földbe passzírozod. Elégedetten nevetsz vicceden.</p>";
+site69.addOption("Átkutatod", function(){
+	jump(site70);
+});
+site69.addOption("Visszatérsz a sátor elé nézelődni", function(){
+	jump(site55);
+});
+
+var kulcs = new Tool("kulcs");
+site70 = new Site("site70");
+site70.description = "<p>Egy kis kulcsot találsz a fickónál, vajon honnan szerezhette ?</p>";
+site70.addOption("Elteszed majd visszatérsz a sátor elé nézelődni", function(){
+	site55.removeOption(site55o_e);
+	kulcs.owned = true;
+	jump(site55);
+});
 
 site75 = new Site("FOCIPÁLYA");
 site75.description = "<p>A focipályán fekszenek néhányan akik a hőségtől szívinfarktust kaptak, egyébként a terep elég elhagyatottnak tűnik.  Hortyogás üti meg a füled és egy dagadt kékzöld macskamackó szerű pokémont veszel észre az egyik fa alatt szundítani. Snorlax az ! Tőle nem messze vakondtúrásokat látsz, az egyik kapuban pedig egy leeresztett futball labdát.</p>";
