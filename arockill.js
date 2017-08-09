@@ -878,6 +878,344 @@ site111.addOption("fakkyeah!", function(){
 site120 = new Site("TORNATEREM");
 site120.description = "<p>Besétálsz az Árok party fő helyiségébe. A tornaterem tömve van asztalokkal, melyeket C64ek, Amigák és különböző retrokütyük borítanak, az egész egy kábeldzsungel. Szemben a kisszínpad felett egy kivetítő van, amin valami retro játékverseny folyik. Alatta az egyik sarokban pedig Elvira a 2017-es év házigazdanője feszít szokásosan elragadó, csábós, testhezálló , combnál felhasított fekete gönceiben és harisnyában, óriási dekoltázzsal párosítva hozzá való dinnyékkel. Épp egy interjú előtt van valakivel és a részleteket beszélik meg. A hozzád közeli sarokban egy hűtőt veszel észre. Komoly számítógépezés is folyik, egy joystickot, klaviatúrát püfölő figura hívja fel a figyelmed, valamint egy óriási agy előtt kuporgó zseni kinézetű programozó.</p>";
 addFieldaction(site120);
+var site120o_a = site120.addOption("Beszállsz a retro játékversenybe", function(){
+	jump(site123);
+});
+var site120o_b = site120.addOption("Beszélsz Elvirával", function(){
+	jump(site131);
+});
+var site120o_c = site120.addOption("Megnézed min ügyködik a programozó", function(){
+	jump(site140);
+});
+var site120o_d = site120.addOption("Megnézed a másik ordibáló figurát", function(){
+	jump(site135);
+});
+var site120o_e = site120.addOption("Megvizsgálod a hűtőt", function(){
+	jump(site121);
+});
 
+
+site121 = new Site("site121");
+site121.description = "<p>A hűtőn egy lakatot veszel észre és hiába próbálod, nem nyílik.</p>";
+site121.addOption("Visszatérsz nézelődni  a terem többi részébe", function(){
+	jump(site120);
+});
+site121.addToolRelay("kulcs", function(){
+	jump(site122);
+});
+
+site122 = new Site("site122");
+site122.description = "<p>Bepattintod a zárba a kis elzett kulcsot és leoldod a lakatot.</p><p>Pár hetes ételmaradékok szaga csapja meg az orrod, ahogy kitárod a hűtő ajtaját. Miután beleeszel egy már szöszös jégkrémbe és leöblíted egy kis penészes kólával, csupán 2 hasznosnak tűnő dolgot találsz. Egy nutellás üveget és egy adag makarónit. Elteszed őket későbbre.</p>";
+site122.addOption("visszatérsz a tornaterem többi részébe vegyülni.", function(){
+	makaronio.owned = true;
+	nutella.owned = true;
+	site120.removeOption(site120o_e);
+	jump(site120);
+});
+
+site123 = new Site("site123");
+site123.description = "<p>A többiek épp az Űrutazó 3000 nevű fantasztikus scifijátékkal lövöldöznek, valami olyasmi lehet a cél, hogy hamarabb szállítsd le a piros plutóniumot a Xerox bolygó valamelyik bázisára.</p>";
+site123.addOption("Elindulsz az űrhajóddal a többieket követve", function(){
+	jump(site124);
+});
+site123.addOption("Elkezdesz lövöldözni összevissza mindenkire", function(){
+	jump(site125);
+});
+site123.addOption("Megunod a játékot és inkább vegyülsz a tömegben", function(){
+	jump(site120);
+});
+
+site124 = new Site("site124");
+site124.description = "<p>Elhagyjátok a Jupiter holdjait és kilőttök fénysebességgel. A plutóniumod nagyon rázkódik. A fénysebességből kiléptek a Xerox mellett.</p>";
+site124.addOption("Lassítasz", function(){
+	jump(site130);
+});
+site124.addOption("Kockáztatsz, hogy megelőzd a többieket", function(){
+	jump(site129);
+});
+
+site125 = new Site("site125");
+site125.description = "<p>Egy kis zavar támad, mert nem számítanak a trollkodásodra. Kilősz 2 játékost, de a többiek összefognak ellened és kénytelen vagy menekülni</p>";
+site125.addOption("Kamikaze módra nekirepülsz a többieknek", function(){
+	jump(site126);
+});
+site125.addOption("Elbújsz egy aszteroida mögött, míg a többiek lövöldöznek rád", function(){
+	jump(site127);
+});
+
+site126 = new Site("site126");
+site126.description = "<p>Szembefordulsz üldözőiddel és belehajtasz a gépükbe. Sikeresen leszedsz a robbanással még 2 játékost, de neked is kampec. Lerakod a kontrollert és visszatérsz vegyülni a tömegbe.</p>";
+site126.addOption("Visszatérsz vegyülni a tornaterembe", function(){
+	jump(site120);
+});
+
+site127 = new Site("site127");
+site127.description = "<p>Egy 3as fokozatú aszteroida mezőbe hajtasz.Legjobb pilótaképességeidre van szükséged, hogy a géped ne ütközzön az űrben repkedő kőzettörmelékekkel. Megvárod míg elül a balhé, majd bekapcsolod a turbóhajtóműveket és a többiek után repülsz. Elhagyod a Jupiter holdjait és a Xerox mellett lépsz ki a fénysebességből. A többiek már megkezdték a leereszkedést!</p>";
+site127.addOption("Elkezdesz lövöldözni a leereszkedőkre", function(){
+	jump(site128);
+});
+site127.addOption("Próbálod megelőzni őket egy veszélyesebb ívű landolással az ionoszszférán át", function(){
+	jump(site129);
+});
+
+site128 = new Site("site128");
+site128.description = "<p>A leereszkedő űrhajók könnyű célpontok, de az egyik játékos megelégeli a trollkodásod és ellened fordul. Már nem is a céljával törődik, csak hogy téged levadásszon. Egy szerencsés lövedékkel megkarcolja hajód rakterét, amire a veszélyes plutónium robbanással reagál. Sajnos kiestél az izgalmas játékból. Visszatérsz vegyülni a tornaterem egyéb részeibe.</p>";
+site128.addOption("Visszatérsz vegyülni a tornaterembe", function(){
+	jump(site120);
+});
+
+site129 = new Site("site129");
+site129.description = "<p>Hajódat meredek ívben engeded bele a Xerox légkörébe, az égő oxigénmező körbeöleli járműved. Ekkor elmegy az áram és a monitorról eltűnik a kép.Mindenki felnevet. Majd legközelebb !</p>";
+site129.addOption("Visszatérsz a tornaterembe nézelődni", function(){
+	jump(site120);
+});
+
+site130 = new Site("site130");
+site130.description = "<p>Visszaveszel a sebességből és óvatosan ereszkedsz lefele. A többiek elhagynak, de a kapkodásuk miatt néhányan túl gyorsan ereszkednek a légkörbe, így elégnek. A többiek pedig nem mérik fel egy ionvihar helyzetét és a villámok végeznek hajóikkal. Te kényelmesen kiszámolod a megfelelő érkezési pont koordinátáit és leteszed a gépet. Sikeres küldetés ! Leszállítottad a piros plutóniumot. A többiek gratulálnak !</p>";
+site130.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+
+site131 = new Site("site131");
+site131.description = "<p>Hello kedvesem ! Én vagyok az , Elvira a sötétség úrnője ! - villantja rád csábos mosolyát Elvira és harisnyás lábait is megtáncoltatja.</p>";
+site131.addOption("Itt helyben magadévá teszed", function(){
+	jump(site132);
+});
+site131.addOption("Megkérdezed mikor lesz Elvira 3 amigára", function(){
+	jump(site132);
+});
+site131.addOption("Inkább viszatérsz a tornaterem egyéb részeire", function(){
+	jump(site120);
+});
+
+site132 = new Site("site132");
+site132.description = "<p>Magadhoz rántod Elvirát és letéped éjfekete bugyiját. A pokol gyönyörei várnak rád ! Gratulálok  ! Elérted a játékban elérhető maximális pontszámot.</p>";
+site132.addOption("Megkérdezed mikor lesz Elvira 3 amigára", function(){
+	jump(site133);
+});
+site132.addOption("Viszatérsz a tornaterem egyéb részeire", function(){
+	jump(site120);
+});
+
+site133 = new Site("site133");
+site133.description = "<p>Ó, kedvesem ! - mosolyog rád - A Viaszművek játék amolyan folytatása volt az Elvira játékoknak. Próbáld meg azt ! :)  Elvira elbűvöl intelligenciájával és könnyedségével.</p>";
+site133.addOption("Itt helyben magadévá teszed", function(){
+	jump(site132);
+});
+site133.addOption("Visszatérsz a tornaterem egyéb részeire", function(){
+	jump(site120);
+});
+
+site135 = new Site("site135");
+site135.description = "<p>A kiabáló figura egy TOHO feliratú pólóban van. A billentyűzeten kalimpál és a joystickot csapdossa, miközben vitatkozik valakivel <br/>- A Monty on the runnak csak a zenéje jó ! Amúgy kikészültem a sok hülye, repkedő teáskannától meg fűnyírótól ! Ráadásul azt se tudod milyen tárgyakat kell az elején választanod, hogy végigjátszd ! Mondom egy szar !  </p><p>A haverja erre válaszol - Ó ha ott nem tudtad melyik tárgy mire jó, akkor te nem játszottál a Spellbounddal ! Na az volt csak igazán kibaszás.  Volt benne vagy 50 tárgy, mindegyik valami értelmetlen hülyeség és fogalmad se volt melyiket hova kell vinni és miért, kb mint ez a játék ! Na és ha mégis sikerült eljutnod a végéig, akkor egyszerűen éhen haltál, mert épp elfelejtettél vizet inni. Baromság !  Mosolyogva hagyod őket vitatkozni.</p>";
+site135.addOption("Megkérdezed tőle mit jelent a TOHO felirat a pólóján", function(){
+	jump(site136);
+});
+site135.addOption("Visszamész a tornaterem egyéb részeibe nézelődni" , function(){
+	jump(site120);
+});
+site135.addToolRelay("godzilla baba", function(){
+	jump(site137);
+});
+site135.addToolRelay("limonádé", function(){
+	jump(site138);
+});
+
+site136 = new Site("site136");
+site136.description = "<p>Műveletlen tahó ! - vicsorog rád a tag és nem is foglalkozik veled tovább.</p>";
+site136.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site136.addToolRelay("godzilla baba", function(){
+	jump(site137);
+});
+site136.addToolRelay("limonádé", function(){
+	jump(site138);
+});
+
+var joystick = new Tool("joystick");
+site137 = new Site("site137");
+site137.description = "<p>Látod, hogy a fickó szeme könnybe lábad, ahogy a Godzilla babáért nyúl. Ó kicsikém, mi történt veled ? Még tavaly vesztettem őt el itt a táborban, nem is reméltem, hogy előkerül. Fogadd cserébe ezt a joystickot.</p>";
+site137.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site137.addToolRelay("limonádé", function(){
+	jump(site138);
+});
+
+var klaviatura = new Tool("klaviatúra");
+site138 = new Site("site138");
+site138.description = "<p>Úgy teszel mintha véletlen lenne és rálögybölöd a limonádét a figura billentyűzetére. Ő sűrűn káromkodik, te pedig szabadkozol. Kihajítja a klaviatúrát egy kukába és elővesz egy másikat. Elteszed a klaviatúrát a felszerelésed közé.</p>";
+site138.addOption("fakkyeah!", function(){
+	site120.removeOption(site120o_d);
+	klaviatura.owned = true;
+	jump(site120);
+});
+
+site140 = new Site("site140");
+site140.description = "<p>A programozó örömmel veszi, hogy érdeklődsz gépezete iránt. Egy óriási agy előtt ül, mely egy tartályban lebeg. A tartály oldalán különböző nyílások vannak, ahol adatokat lehet betáplálni. Ez a találmány- kezdi lelkesen a zseninek tűnő egyén- arra szolgál, hogy megtalálja azt az eszközt mellyel legyőzhetőek különböző veszélyek. Előbb be kell táplálnod a veszélyforrás megnevezését, majd a gép utasításai alapján készíthetsz ellene egy fegyvert !-  fejezi be mondókáját, majd izgatottan üldögél.</p>";
+site140.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site140.addToolRelay("kód DIN", function(){
+	jump(site141);
+});
+
+site141 = new Site("site141");
+site141.description = "<p>Az agy beolvassa a cetlid és megjelenik előtte egy felirat : DIN. Úgy tűnik további adatokra vár.</p>";
+site141.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site141.addToolRelay("kód OSAU", function(){
+	jump(site142);
+});
+
+site142 = new Site("site142");
+site142.description = "<p>Az agy beolvassa a második cetlit is és a következő felirat jelenik meg: DINOSAU... Úgy tűnik további adatokra vár.</p>";
+site142.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site142.addToolRelay("kód RUS", function(){
+	jump(site143);
+});
+
+site143 = new Site("site143");
+site143.description = "<p>Az agy beolvassa a harmadik cetlidet is. A következő felirat kezd el villogni a képernyőjén : DINOSAURUS   Az Ön ellenfele egy dinoszaurusz- mondja az agy gépies hangon. Pár percig kattog és füstöl, majd egy kép jelenik meg a kijelzőn. Alatta a dinoszaurusz elleni fegyver felirat olvasható. Úgy néz ki, mint egy botkormány, melyből valamilyen zöld színű csillagok repkednek ki. Kérem helyezze be a fegyver első alkatrészét ! - mondja az agy.</p>";
+site143.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site143.addToolRelay("joystick", function(){
+	jump(site144);
+});
+
+site144 = new Site("site144");
+site144.description = "<p>Behelyezed a fegyver első alkatrészét. Kérem helyezze be a fegyver második alkatrészét !</p>";
+site144.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site144.addToolRelay("shuriken", function(){
+	jump(site145);
+});
+
+
+site145 = new Site("site145");
+site145.description = "<p>Behelyezed a fegyver második alkatérszét is. Kérem helyezze be a fegyver harmadik alkatrészét ! </p>";
+site145.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	jump(site120);
+});
+site144.addToolRelay("lézer", function(){
+	jump(site146);
+});
+
+
+site146 = new Site("site146");
+site146.description = "<p>Fegyver kész ! - mondja az agy és kiad magából egy LézerShurikenlövő Joystickot ! Elteszed a hiperfegyvert.Ebben a pillanatban azonban óriási döndülés hallatszik az épületen kívülről !</p>";
+site146.addOption("Szaladsz a kijárat felé", function(){
+	jump(site147);
+});
+site146.addOption("Próbálsz figyelni mi történik, de nem pánikolsz", function(){
+	jump(site150);
+});
+site146.addOption("Elkezdesz lövöldözni a Lézershuriken lövő Joystickkal", function(){
+	jump(site149);
+});
+
+site147 = new Site("site147");
+site147.description = "<p>A tömeg is megindul veled és nekiszaladnak a tartógerendáknak. Az épület nem bírja a nyomást és összeroskad ! </p>";
+site147.deadend = true;
+
+site149 = new Site("site149");
+site149.description = "<p>Addig lövöldözöl míg rászakad az emberekre az épület és téged is összepaszíroz egy gerenda.</p>";
+site149.deadend = true;
+
+site150 = new Site("site150");
+site150.description = "<p>Megveted a talpad és bekészíted a LézerShuriken lövő Joystickot. A bejárat ekkor összeomlik és a tetőszerkezet is megremeg. Több tucat ember sikoltozik, ahogy leszakadnak a testrészeik, majd a szájuk is, így nem sikoltoznak tovább. Úgy érzed magad, mint egy kibaszott szuperhős.</p><p>Eddig eljutottál ebben a szar játékban, most nem fogod feladni, várjon rád bármi.</p><p>A tornaterem teteje recseg-ropog és a kivetítőnél egy dinoszaurusz dugja be a pofáját. Mintha csak egy megelevenedett játék lenne, egy rémálom 3D-s verziója. Rád tátja ocsmány, fél méteres fogszilánkokkal tűzdelt pofáját és szédítő hangorkán kíséretében felvisít, dögletes hússzagot lehelve magából. Elvira felsikít.<br/>- Ments meg, ments meg ! - csábosan izgeti magát, harisnyája felszakadt. </p>";
+site150.addOption("Odaszaladsz, hogy megmentsd Elvirát", function(){
+	jump(site151);
+});
+
+site151 = new Site("site151");
+site151.description = "<p>Áttörsz a tömegen Elvira felé, félrerúgva az utadba kerülő C64 rajongókat. Valakinek kiütöd a fogát, valakinek betöröd az orrát, egy másiknak a hátára ugrasz és onnan rugaszkodsz álmaid asszonya felé.<br/>- Elviraaaaa - bömbölöd lassított felvételként, mint egy rossz akcióhős.  - Szerelmem.... ! - látod, hogy Elvira szemében könnyek csillognak ekkora önfeláldozás láttán. De azért a combokért bármit megtennél. Egy olyan nőci, mint ő, aki a horrorfilmes és a játékiparba is betört, megérdemli, hogy megmentsék és hogy benne legyen ebben a játékban. Ráadásul még pár szar videoklipet is készített.</p><p>Ebben a pillanatban a dinoszaurusz bekapja Elvira felső testét és kettéharapja. Reccsenés hallatszik, ahogy Elvira darázsdereka elválik szép hosszú combjaitól. </p>";
+site151.addOption("Megpróbálod megmenteni Elvira maradék lábait", function(){
+	jump(site151);
+});
+site151.addOption("Dühödten a dínó ellen fordulsz", function(){
+	jump(site153);
+});
+site151.addOption("Megölöd magad kétségbeesésedben", function(){
+	jump(site154);
+});
+
+site152 = new Site("site152");
+site152.description = "<p>Egy elterelő löveget lősz a dínó felé és Elvira megmaradt combjaiért rohansz. A vállaidra veted őket, majd egy lyukat robbantasz a falba és kirohansz rajta az erdőbe. Életed hátralevő részét vademberként töltöd a Bakonyban, a dínóról nem hallasz. Elvira lábait egy trónra helyezed, felsőtestét gallyakból újraépíted, lábai közé puha mohát teszel és holdfényes éjszakákon hajnalig szeretkeztek. Gratulálok, teljesítetted a játékot ! Bár boldogságod nem teljes, hős lettél ! Köszönjük, hogy játszottál ezzel a baromsággal, ha eddig eljutottál akkor értékelésünk alapján egy csillagos ötös arc vagy !</p>";
+site152.deadend = "THE END"
+
+site153 = new Site("site153");
+site153.description = "<p>Megdöglesz ! - üvöltöd őrjöngve és elkezded sorozni a dínót. A LézerShuriken lövő Joystick véres húscafatokat szakít ki testéből. Az arca kezd széthullani egy gusztustalan masszává. Dögölj meg, pusztulj ! A dínónak az arca helyén már kikandikál a koponyája, de tovább küldöd belé a lézershurikeneket, míg az egész feje szét nem robban és agyának cafatjai szétfröccsennek a teremben. Legyőzted ezt az undorító teremtményt. Dühöd forrong ! Az árok partisok megünnepelnek, felmossák a dzsuvát. Elvira maradékát eltemetik hátul a focipályánál. Elvira elvesztése felett érzett bánatodban inni kezdesz és alkoholista leszel. Gratulálok !!! Sikeresen végigjátszottad a játékot és megnyitottad az alkoholista endinget. Bonts egy sört, büszke lehetsz magadra ! Köszi, hogy időt szántál a játékunkra, reméljük jól szórakoztál, nyisd meg a többi befejezést is !</p>";
+site153.deadend = "THE END"
+
+site154 = new Site("site154");
+site154.description = "<p>Magad ellen fordítod a LézerShuriken lövő Joystickot. A lézershuriken könnyedén és fájdalommentesen leviszi a fejed. Meghaltál, bár megértjük döntésedet. Elvira nélkül nem érdemes élni !!!</p>";
+site154.deadend = true
+
+site156 = new Site("site156");
+site156.description = "<p>Ó te plecoidkorszak vastagbőrű ocsmánypofájú történelmi képződménye!<br/>Ó te Jurassic Park lakó alsóbbrendű hollywoodi rabszolgaállat!<br/>Ó te nőgyalázó gitáron tanuló gördeszkás buckalakó!<br/>Ó te csontokkal múzeumban öregedő emléktünemény! Takarodnál vissza ezredéves sírodba régészek martalékául!<br/>Ó te Indiana Jones által feltárt semmirekellő ősemberirtó zöld gyíklény!<br/> Bárcsak csökött kis kezeiddel írnál verseket a meteoritról, mely kipusztította fajodat!</p><p>Szavalod neki válogatott káromkodásaidat.A dinoszaurusz parányi agyával próbálja feldolgozni mit mondasz, majd egy elektromos csóvát köp feléd.</p>";
+site156.addOption("Félregurulsz ", function(){
+	jump(site157);
+});
+site156.addOption("Tovább káromkodsz neki", function(){
+	jump(site158);
+});
+
+site157 = new Site("site157");
+site157.description = "<p>Balra gurulsz, majd rögötn jobbra a második lövedék elől. Sortűzzel viszonzod a köpeteket, azonban a dinoszaurusz ide-oda mozgatja a fejét . Egyre közelebb érsz hozzá, átugrasz egy újabb elektromos csóvát és az asztalok tetején futsz az óriási szörny felé. Előtted tornyosul félelmetes pofája, bömböl dühében, ahogy próbál leszámolni veled.</p>";
+site157.addOption("Beugrasz a pofájába, hogy a hasából lődd cafatokra", function(){
+	jump(site159);
+});
+site157.addOption("Becsúszol a hasa alá, miközben egy sortűzzel feltéped a beleit", function(){
+	jump(site160);
+});
+
+site158 = new Site("site158");
+site158.description = "<p>Ó te Godzilla utánzat... - kezded majd a rád áramló energiaköpettől elektromos hamuvá olvadsz.</p>";
+site158.deadend = true;
+
+site159 = new Site("site159");
+site159.description = "<p>Beugrasz a dínó tátott pofájába és ő vidáman elrágcsál félméteres hegyes fogaival. :) Jó étvágyat !</p>";
+site159.deadend = true;
+
+site160 = new Site("site160");
+site160.description = "<p>Pusztuuuulj ! - kiáltod és nekirontasz a dínónak. Próbál elnyelni, de az utolsó pillanatban becsúszol és az állkapcsa feletted zárul össze. Lenyomod a fegyver elsütőbillentyűjét és a Joystick ontani kezdi magából a lézershurikeneket. Végigvágódnak az állat nyakán le a hasáig, végigtépve a dínó páncélzatát és húsát. Bumm Bumm Óriási lukakat robbantasz védtelenebb alsó részén. A nyakából kiállnak csigolyái, a hasából kifordulnak belei. Ömlik rád a sűrű vér és és a belsőségek. Majd a dínó megremeg és egy végső sikoly kíséretében összeroskad. Hatalmas teste majdnem agyonnyom, de a többiek kirángatnak és a vállaikra vesznek!</p><p>Hős lettél ! Legyőzted a dínót, aki a tábort terrorizálta. Megtaláljátok naplóját, amiben bevallja, hogy ő ejtette a parkolóban az autót a táborozókra és ő kergette förtelmes fekáliájával kétségbeesésbe a takarítónőt.</p><p> 3 napig tartó ünneplés kezdődik, melynek végén elveszed Elvirát feleségül ! Majd boldogan éltek , míg meg meg nem haltok és sok kis porontyotok lesz ! Neved örökké dicső marad az Árok partik történelmében.</p><p>Köszönjük, hogy játszottál játékunkkal ! Találkozzunk jövőre is !</p>";
+site160.deadend = "THE END"
+
+site162 = new Site("site162");
+site162.description = "<p>Megveted a lábad és mint Duke Nukem sorozni kezded az Árok partit tönkretevő ősgyíkot. A lézershurikenek óriási sebeket ejtenek a dínó tátongó pofáján. Hé bébi ' - mondod -, kinek van nagyob tojása ?  Heréidet kellemes érzés feszíti, amint megaturbó fegyvereddel szétsorozod a dínópicsát.Felüvölt fájdalmában, majd menekülőre fogja a dolgot.</p>";
+site162.addOption("Üldözőbe veszed", function(){
+	jump(site163);
+});
+site162.addOption("Hősként tetszelegsz és ünnepelteted magad", function(){
+	jump(site164);
+});
+
+site163 = new Site("site163");
+site163.description = "<p>Utánaveted magad az erdőbe menekülő szörnyetegnek.Preadtorként vadásztok egymásra hónapokig, sárral kened arcod és békákat eszel. Végül ások egy óriási gödröt, melyet óriási levelekkel fedsz le, a dínó meg beleesik. Mielőtt lesújtanál rá megsajnálod őt és összebarátkoztok. Elnevezed Denvernek és meggyógyítod sebeit. Együtt tanultok gitározni is. Éjszakánként hallani, ahogy az erdőben végigdübürögtük és természetesen az Árok partit is rendszeresen látogatjátok, ezúttal békésen. A dínó bevallja, hogy ő volt aki a parkolóban ráejtette az autót a bámészkodókra és ő járt be a wcbe is titokban kakálni, ami miatt a takarítónő felakasztotta magát. De ezeket megbánta. Azóta Árok partin ő a csúszda. Happy End ! Gratula, végigjátszottad a játékot ! Köszönjük neked mi , a készítők !Reméljük jól szórakoztál és ne felejtsd el a többi végigjátszást is megnézni ! ÁROK RULEZ</p>";
+site163.deadend = "THE END"
+
+site164 = new Site("site164");
+site164.description = "<p>Megveted a lábad és mint Duke Nukem sorozni kezded az Árok partit tönkretevő ősgyíkot. A lézershurikenek óriási sebeket ejtenek a dínó tátongó pofáján. Hé bébi ' - mondod -, kinek van nagyob tojása ?  Heréidet kellemes érzés feszíti, amint megaturbó fegyvereddel szétsorozod a dínópicsát.Felüvölt fájdalmában, majd menekülőre fogja a dolgot.</p>";
+site164.addOption("Felszaltózol a háztetőre és onnan nézel szembe a veszéllyel", function(){
+	jump(site165);
+});
+site164.addOption("Benyomod  az erősítőket és énekelni kezdesz", function(){
+	jump(site166);
+});
+
+site165 = new Site("site165");
+site165.description = "<p>Elrugaszkodsz a levegőbe de a dinoszaurusz gyorsabb nálad. A levegőben kettéharap és jóízűen elrágcsál, majd a háztetőn lévő kis szélkakassal kipiszkálja a fogait. Ezután folytatja Ajkarendek módszeres lemészárlását. Másnap elfoglalja a világot és kilép az űrbe. Harmadnap megküzd Supermannel és őt is legyőzi. Negyedik nap legyőzi Istent és a világ, ahogy ismertük, nincs többé. Elérkezik a végső visszaszámlálás kora. Majd az is elmúlik. És mi történik ezután? Megtudhatod az Árok Maniac 2ből !!</p><p> De most sajnos meghaltál...</p>";
+site165.deadend = true;
+
+site166 = new Site("site166");
+site166.description = "<p>Ó jee - adod a ritmust a lábaddal, a hangosítók csutkán vannak. Elkezded pengetni a LézerShuriken lövő Joystickot mint valami űrgitárt a jövőből. Megjelenik melletted a zenész, akinek a kezein segítettél és ő is gitározni kezd. Ekkor megjelenik a doboknál a takarítónő szelleme a és félelmetes dobolásba kezd. A dínó volt, mondja, aki miatt ő felakasztotta magát, mert titokban összekakálta a WC-t fertelmes bűzével. És a dínó dobta a parkolóban az autót a népekre. Oldalról beszalad az István a király pólós csöves is.<br/>- Eladtam az összes limonádét ! - kiáltja boldogan és felkap egy gitárt. Immár teljes a banda.</p><p>Elkezditek a prehisztorikus ősrockot !! Badunga, badunga Dinoszaur haza !</p><p>A felétek rohamozó dinoszaurusz már csak méterekre van, amikor különleges energiapajzs veszi körbe a zenekarotokat . A zenélés erejével életre hívtatok egy ősi mágiát. Egy óriási energianyaláb csap ki a titeket övező felhőből és nekivágódik a dínónak pont mielőtt egészben bekapná az egész színpadot.</p><p>Egy pillanatra visszautaztok az időben és látjátok, hogy a dinoszaurusz saját korába érkezett, ahol boldogan játszik a dinoszaurusz családjával. Ekkor ti újra a színpadra kerültök és a veszélyből feocsúdott árok partisok és ajkarendeki vendégek odagyűlnek elétek.</p><p>A zenekar pedig hajnalig játszik, majd tovább, 3 napon keresztül. Óriási buli keveredik, összeházasodsz Elvirával, több gyereketek születik, az egyik közülük feltalálja a világbékét.</p><p>A zenekar első lemeze Barlangrajzok címen megjelenik és hatalmas sikert arat a világ fejletlenebb pontjain, főként az Aamazonas vidékén, ahol következő kannibálos játékunk fog játszódni. Figyeld a reklámokat!</p><p>Gratulálok, teljesítetted a gamét és minden jó ha jó a vége. Köszönjük a ráfordított idődet, reméljük szórakoztatónak találtad.</p><p>Nézd meg a többi befejezést is, találkozunk jövőre is az Árok parton... bocs, partin. </p>";
+site166.deadend = "THE END"
 
 
