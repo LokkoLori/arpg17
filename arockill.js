@@ -583,6 +583,194 @@ site70.addOption("Elteszed majd visszatérsz a sátor elé nézelődni", functio
 site75 = new Site("FOCIPÁLYA");
 site75.description = "<p>A focipályán fekszenek néhányan akik a hőségtől szívinfarktust kaptak, egyébként a terep elég elhagyatottnak tűnik.  Hortyogás üti meg a füled és egy dagadt kékzöld macskamackó szerű pokémont veszel észre az egyik fa alatt szundítani. Snorlax az ! Tőle nem messze vakondtúrásokat látsz, az egyik kapuban pedig egy leeresztett futball labdát.</p>";
 addFieldaction(site75);
+var site75o_a = site75.addOption("Megvizsgálod a Snorlaxot", function(){
+	jump(site76);
+});
+var site75o_b = site75.addOption("Megvizsgálod a vakondtúrásokat", function(){
+	jump(site77);
+});
+var site76o_c = site75.addOption("Végigsétálsz a focipálya vonalain", function(){
+	jump(site78);
+});
+var site75o_d = site75.addOption("Bemész az erdőbe kakálni", function(){
+	jump(site79);
+});
+var site75o_e = site75.addOption("Kicsit lasztizol", function(){
+	jump(site79);
+});
+site75.addToolRelay("antennás kapcsoló", function(){
+	jump(site85);
+});
+
+
+site76 = new Site("site76");
+site76.description = "<p>Úgy tűnik Snorlax nagyon mélyen alszik. Hortyogása betölti az egész focipályát. Talán fel tudnád ébreszteni valahogyan, de egyelőre nincs ötleted.</p>";
+site76.addOption("Visszatérsz a focipálya szélére", function(){
+	jump(site75);
+});
+site76.addToolRelay("megfőtt kutya", function(){
+	megfottkutya.owned = false;
+	jump(site81);
+});
+
+var nutella = new Tool("nutella");
+site77 = new Site("site77");
+site77.description = "<p>Több vakondlyukat is látsz itt, melyből kíváncsi fejek merednek rád. Játékos vakondok fickándoznak a túrásokban, de ahogy közeledsz riadtabban mélyebbre ássák magukat.</p>";
+site77.addOption("Belepisálsz a járatokba", function(){
+	jump(site82);
+});
+site77.addOption("Megpróbálsz beszélgetni a vakondokkal", function(){
+	jump(site83);
+});
+site77.addOption("Visszatérsz a focipálya szélére", function(){
+	jump(site75);
+});
+
+site78 = new Site("site78");
+site78.description = "<p>Elindulsz az egyik szöglettől, azonban nem veszed észre, hogy egy kosárpálya vonalait is felfestették. Figyelmetlenséged eredményeképpen sajnos eltévedsz és sosem találsz ki a beton focipályáról. Sikolyod az erdő sodorja  holdfényes éjszakákon. Sajnáljuk, de ez a meccs számodra véget ért !</p>";
+site78.deadend = true;
+
+site79 = new Site("site79");
+site79.description = "<p>Érzed, hogy a sörözős életmódod eredményeképpen valami folyós, híg folyadék akar távozni hátsó lukadon. Gyorsan kioldod a gatyád ahogy szaladsz, de sajnos a térdedre csúszik és elesel. Közben összefosod magad és az árokba gurulsz. A fosszagra előjön egy farkas aki nyalogatni kezdi a frissen leszart lábaidat, majd bevonszol odújába, ahol arra kényszerít, hogy a kölykeit neveld.</p><p>Évekig ott tart és teljesen elveszted a kapcsolatot a külvilággal, elállatiasodsz. Hörögve kommunikálsz a farkasokkal és vadászni is velük jársz. Kijártok a faluba, és hébe hóba egy-egy embert is elejtetek. Majd elüt téged egy autó és a tested bekerül egy múzeumba. 150 év múlva egy tudós mintát vesz belőled, klónoz, majd visszaküld a múltba a focipályára. Az emlékek nyomasztanak.</p>";
+site79.addOption("Folytatod küldetésed", function(){
+	site75.removeOption(site75o_d);
+	jump(site75);
+});
+
+site80 = new Site("site80");
+site80.description = "<p>Próbálgatod a leeresztett focilabdát, de rájössz, hogy ez egy hülye játék és inkább iszol egy sört.</p>";
+site80.addOption("Visszatérsz a focipálya elé nézelődni.", function(){
+	site75.removeOption(site75o_e);
+	jump(site75);
+});
+
+var kodrus = new Tool("kód RUS");
+site81 = new Site("site81");
+site81.description = "<p>Legyömöszölöd Snorlax torkán a főtt kutyát, mert olvastad valami hülye pokémon kézikönyvben, hogy ő nagyon szereti a kutyákat. :) Erre abbahagyja a hortyogást és kipattannak a szemei.<br/>-ÁÁáá te vagy az ?! - ásítja cseppet sem meglepetten, majd folytatja - Nos én a játék készítője vagyok, meglehetősen lusta teremtés. De tudtam, hogy jönni fogsz és ezért át kell adnom neked valamit. Tulajdonképpen azért alszom itt a játékban és van nálam ez a tárgy, mert lusta voltam még ezt is beleírni a játék történetébe. Szóval tessék ! - azzal átnyújt neked egy cetlit a következő felirattal : RUS. Hmmm ez is valami kód lehet... - nézegeted a cetlit majd bedobod a felszerelésed közé.</p>";
+site81.addOption("hagyod Snorluxot hadd pihenjen tovább", function(){
+	kodrus.owned = true;
+	site75.removeOption(site75o_a);
+	jump(site75);
+});
+
+site82 = new Site("site82");
+site82.description = "<p>Elkezded kiengedni a napi söradagot lerombolva ezzel a vakondokok nyílásait.  Azonban hirtelen az egyik kiugrik a föld alól és ráharap a locsolócsődre. Éles fogaival súlyos sebeket ejt és gyorsan elvérzel. Ezután a vakondokok behúznak a járataikba és elraktároznak télire. Vakondvacsora lettél !</p>";
+site82.deadend = true;
+
+site83 = new Site("site83");
+site83.description = "<p>Habla espanol ? - kérdezed a vakondoktól. <br/>- Si si - felelik - de beszélünk jól magyarul is. Még Castro miatt költöztünk ide Kubából. Az amerikai autók pedig áthajtanak a fejünkön. A járatainkba rendszeresen betör a tengervíz. Magyarország sokkal kedvezőbb tájfekvésű. És itt Ajkarendeken semmi nem zavar minket, csak a hülye számítógépesek évente egyszer. De ők is rendesek, néha hoznak nekünk ennivalót. - A vakondok nagyon közlékenynek bizonyulnak.</p>";
+site83.addOption("Lepisálod a járataikat", function(){
+	jump(site82);
+});
+site83.addOption("Visszatérsz a focipálya széléhez", function(){
+	jump(site75);
+});
+site83.addToolRelay("nutella", function(){
+	jump(site84);
+});
+
+var godzillababa = new Tool("godzilla baba");
+site84 = new Site("site84");
+site84.description = "<p>Kiöntöd a nutellát a vakondtúrások mellé. A vakondokok megvárják míg arrébb mész, majd félénken elfogyasztják kedvenc csemegéjüket. Visszamásznak a lukakba, ahonnan ekkor egy kis bábú repül ki. Leporolod és egy kis godzilla baba az ! Valószínűleg a vakondokokokok így hálálják meg neked, hogy megetetted őket. Kedvenc babájukat adják neked !</p>";
+site84.addOption("fakkyeah", function(){
+	site75.removeOption(site75o_b);
+	godzillababa.owned = true;
+	jump(site75);
+});
+
+site85 = new Site("site85");
+site85.description = "<p>Bepattintod a kapcsolót és ekkor a focipálya közepe félrehúzódik, majd egy lift emelkedik a magasba. Érdeklődve szállsz be. Az ajtók becsukódnak és a lift elindul veled lefele. Mikor kinyílik az ajtaja egy gyönyörű réten találod magad, melyet virágzó japán cseresznyefák ölelnek körbe. A rózsaszín levelek puhán hullámoznak a szélben, a nap vakítóan ragyog. Nem tudod ez hogyan lehetséges, de a látvány teljesen elvarázsol. Kilépsz a liftből és ekkor egy alacsony kínai embert veszel észre előtted törökülésben.</p><p><b>Mit teszel?</b></p>";
+site85.addOption("Lerúgod a fejét", function(){
+	jump(site86);
+});
+site85.addOption("Kérdezel őle valamit kínaiul", function(){
+	jump(site87);
+});
+site85.addOption("Átugrod", function(){
+	jump(site88);
+});
+
+site86 = new Site("site86");
+site86.description = "<p>A kínai feje fémből van. Amint belerúgsz a lábad véres péppé válik. Legközelebb dönts okosabban. Ha ha ha.</p>";
+site86.deadend = true;
+
+site87 = new Site("site87");
+site87.description = "<p>Csing Csöng ! - mondod az üldögélő kínainak. Ő kinyítja szemeit és így felel : Én lenni Láá Lee a kínai cigány. Nekem jut Nukupina csak Csa Csi. A fiam Kup Lung hozott a taxiján.</p>";
+site87.addOption("Megunod és lerúgod a fejét", function(){
+	jump(site86);
+});
+site87.addOption("Átugrod", function(){
+	jump(site88);
+});
+
+site88 = new Site("site88");
+site88.description = "<p>Átrepülöd a kis törpét, aki hiába kap utánad. Lehuppansz a földre és ekkor a fákon egy fekete ninját szúrsz ki. Valami villan a kezében.</p>";
+site88.addOption("Vársz egy kicsit mi történik", function(){
+	jump(site89);
+});
+site88.addOption("Félrebukfencezel", function(){
+	jump(site90);
+});
+site88.addOption("Felédobsz egy tárgyat a zsebedből", function(){
+	jump(site91);
+});
+
+site89 = new Site("site89");
+site89.description = "<p>A ninja belédhajít egy dobótőrt ami mérgezett. Hahaha ismét meghaltál.</p>";
+site89,deadend = true;
+
+site90 = new Site("site90");
+site90.description = "<p>Mint a villám cselekedsz régi mestered tanítására emlékezve, aki azt mondta : Jobb ma egy túzok, mintha holnap púzok. Felpattansz és észreveszed, hogy a ninja közben leugrott mögéd a tisztásra. <br/>- Az utolsó ninja vagyok - sziszegi feléd. - Életre keltem a C64 játékokból. Hatalmam végtelen, csak a tisztelet állíthat meg. Válaszolj hát őszintén : Végigjátszottad valaha valamelyik Last Ninja részt ?</p>";
+site90.addOption("Igen", function(){
+	jump(site92);
+});
+site90.addOption("Nem", function(){
+	jump(site93);
+});
+
+
+site91 = new Site("site91");
+site91.description = "<p>Mielőtt elhajítanád a tárgyat egy mérgezett dobótőr fúródik a nyakadba. Azonnal meghalsz és még meg is mérgeződsz. A róka ami majd belőled eszik szintén meghal. Te és a róka meghaltatok.</p>";
+site91.deadend = true;
+
+
+site92 = new Site("site92");
+site92.description = "<p>Az Utolsó Ninja meghajol előtted majd dob magára egy füstbombát és eltűnik. Még hallod a füstben suttogását : Keresd az igazi tudást, tiszteld a régieket!  Szavai értelmén filózol, amikor a sűrű fehérségből egy sárkányalak támad neked !!!</p>";
+site92.addOption("Karatézol vele", function(){
+	jump(site94);
+});
+site92.addOption("Megpróbálsz láthatatlanná válni", function(){
+	jump(site95);
+});
+site92.addOption("Hagyod, hadd győzzön le", function(){
+	jump(site96);
+});
+
+site93 = new Site("site93");
+site93.description = "<p>Térj vissza ha már tanultál egy kis ninjatudást ! - mondja az Utolsó Ninja és a fejedbe köp egy mérgezett bambusztűt.</p>";
+site93.deadend = true;
+
+
+var shuriken = new Tool("shuriken");
+site94 = new Site("site94");
+site94.description = "<p>Hadzsime ! -  kiáltod és védekezni kezdesz. A sárkány meglepetésszerűen érkezett, de most, hogy számítasz rá már nem ellenfél. Gyorsan széttöröd a sárkánymaszkot és a benne megbújó embert. Ekkor megjelenik Jean-Claude Van Damme. <br/>- Gratulálok ! Végigjártad a titkos mesterek próbáját. Ajándékod egy ősi ninja shuriken !.... - azzal elenyészik a füstben és még hallod a következőket <br/>- Sajnos az új filmjeim már elég bénák, ne nézd meg őket, inkább járj te is karatézni filmnézés helyett.</p></p>Megfogadod a jótanácsotó, majd visszaliftezel a focipálya szélére.</p>";
+site94.addOption("fakkyeah", function(){
+	shuriken.owned = true;
+	jump(site75);
+});
+
+site95 = new Site("site95");
+site95.description = "<p>Beleolvadsz a ködbe, de a sárkányalak rád talál !!!</p>";
+site95.addOption("Karatézol vele", function(){
+	jump(site95);
+});
+site95.addOption("Hagyod, hadd győzzön le", function(){
+	jump(site96);
+});
+
+site96 = new Site("site96");
+site96.description = "<p>A sárkány lekaratéjoz, mert nem védekezel. Hahahaha te hülye mit gondoltál, tényleg ez a megoldás ?:)</p>";
+site96.deadend = true;
 
 site100 = new Site("TUSOLÓK");
 site100.description = "<p>Egy elhagyatott mellékszárny előtt állsz. A falak romosak, az ablakok néhol betörve, de mindenhol rács. Kísérteties fény szűrődik ki. A falon egy graffitit látsz : Az Árok egy szar.. felirattal. Előtted egy ajtó, megpróbálod, de zárva van. A bokorban viszont mintha mocorogna valami.</p>";
