@@ -775,6 +775,105 @@ site96.deadend = true;
 site100 = new Site("TUSOLÓK");
 site100.description = "<p>Egy elhagyatott mellékszárny előtt állsz. A falak romosak, az ablakok néhol betörve, de mindenhol rács. Kísérteties fény szűrődik ki. A falon egy graffitit látsz : Az Árok egy szar.. felirattal. Előtted egy ajtó, megpróbálod, de zárva van. A bokorban viszont mintha mocorogna valami.</p>";
 addFieldaction(site100);
+var site100o_a = site100.addOption("Megvizsgálod a bokrot", function(){
+	jump(site101);
+});
+var site100o_b = site100.addOption("Rárúgsz az ajtóra", function(){
+	jump(site102);
+});
+site100.addToolRelay("budikulcs", function(){
+	jump(site104);
+});
+
+site101 = new Site("site101");
+site101.description = "<p>A bokorban egy letolt gatyájú alakot látsz, aki épp egy kibelezett C64 floppy lejátszóba tömködi a micsodáját. Ez az, mindjárt betöltődik ! Loading, run, kicsim run ! - hirtelen vér fröcsköl ki a gépből . - Syntax error - üvölti a perverz és eldől.</p>";
+site101.addOption("Úgy érzed eleget láttál.", function(){
+	site100.removeOption(site100o_a);
+	jump(site100);
+});
+
+site102 = new Site("site102");
+site102.description = "<p>Nekifutsz és megcélzod egy szép repülőrúgással az ajtó közepét. A lábad áttöri a deszkát, a térded reccsen egy hatalmasat. Az ajtó felé zuhansz, a lábad még mindig bent van. Ekkor valaki megszólal bentről <br/>- Magának igen erős lába van, majdnem leütötte vele a szemüvegem</p>";
+site102.addOption("Beszédbe elegyedsz a hanggal", function(){
+	jump(site103);
+});
+site102.addOption("Ijedtedben kihúzod a lábad", function(){
+	site100.removeOption(site100o_b);
+	jump(site100);
+});
+
+site103 = new Site("site103");
+site103.description = "<p>- Ki maga ? - kérdezed érdeklődve és megemeled a benti lábad kérdőn. Ekkor olyan hangot hallasz, mintha valaki egy szamurájkardot húzna elő. Bizsergető, égető érzés tör rád és bent valami a földre zuhan. Meleg ragacs folyik a lábadon. Kihúzod és észreveszed, hogy térdből hiányzik !!!! <br/>- ÁÁÁÁhhh mentőt !!! - kiáltod, majd elájulsz, s többet fel se kelsz, hahaha a gyilkos elkapott.</p>";
+site103.deadend = true;
+
+site104 = new Site("site104");
+site104.description = "<p>A kulcs passzol a zárba.Kinyitod az ajtót és egy romos folyosóra érsz. Egy lámpa pislákol néha-néha felvillantva a szétszórt törmeléket, de így is sok sötét sarok marad. Mögüled a sötétből valami morgást hallasz.</p><p><b>Merre indulsz?</b></p>";
+site104.addOption("A sötétbe", function(){
+	jump(site105);
+});
+site104.addOption("Előre a folyosón ", function(){
+	jump(site106);
+});
+
+site105 = new Site("site105");
+site105.description = "<p>Egyre beljebb mész a bársonyos sűrű mélysötétbe. Egy idő után nem érzékeled a falakat magad körül és megszűnik az időérzéked. Olyan sötétbe kerülsz, hogy azt sem tudod elolvasni mi van ide írva. Ezért meghaltál ! :)</p>";
+site105.deadend = true;
+
+site106 = new Site("site106");
+site106.description = "<p>Elindulsz előre és egy félig behajtott ajtóhoz érsz. Furcsa szag árad ki, mint a saját szobád pár hét után. Óvatosan benyitsz és elhűlsz a látványtól. Egy mocskos wc-t látsz, melynek közepén egy felakasztott takarítónő lóg. Virágos ruhácskája feszül tottyadt testén, lábáról lehullott a vastag fehér papucs. Szódásszifon szemüvege alatt látod kidülledt, felnagyított szemgolyóit. Enyhén körbeforog, mint egy ventillátor és halkan nyikorog.</p><p>A wc szélén egy kis pénzszedő asztalka van, rajta egy nyitott könyv.</p>";
+var site106o_a = site106.addOption("Elolvasod a könyvet", function(){
+	jump(site107);
+});
+var site106o_b = site106.addOption("Pénzt dobsz a tálkába és wczel ", function(){
+	jump(site108);
+});
+var site106o_c = site106.addOption("Átkutatod a néni testét", function(){
+	jump(site109);
+});
+var site106o_d = site106.addOption("Bokszolsz kicsit a néni testén", function(){
+	jump(site110);
+});
+var site106o_e = site106.addOption("Visszatérsz a tusoló épülete elé", function(){
+	jump(site100);
+});
+
+site107 = new Site("site107");
+site107.description = "<p>A kis könyv címlapján felirat : <b>A wc-s néni naplója</b>  Beleolvasol.</p> <p class='handwrite'>Nem bírom tovább ! Eddig tűrtem, sikáltam a szart, a hányást. Az árok partisok telekakálták az épületet, Undorító gyrosos mócsingokat hagyva, sok meg nem emésztett hagyma, bűzös galacsinok halma. És én tűrtem, nyeltem a szart. De van valaki, egy titkos férfi. Feltételezem, hogy férfi, de még sosem láttam. Beoson ide és szétszar mindent, telekeni a falakat, a csapokat, a székemet, még a Füles rejtvényújságomat is ! Pedig majdnem teljesen megfejtettem. Ez az idegen olyan dögletes trottyintásokat hagy maga után, hogy nem bírom tovább. A víz nem mossa le. A wc kefét szétmarja. Gumikesztyűvel tömködöm le a lukba. A térgykalácsom teljesen kikészült. Reumás és vízszeres vagyok.</p><p>Erzsikém nem bírom tovább. Nem lesz több zsírosdeszka a kisonokámnak ! Felmondok !</p><p>.... Itt véget ér a napló. Szomorúan bámulsz a szegény wc-s néni testére, aki mellett mindenki elsétált és akivel nem törődött senki. De vajon ki lehetett az a titokzatos idegen akiről beszélt ?</p><p> Körbeszagolsz és magad is valami állatias bűzt érzel a helyiségben. Úgy döntesz kinyomozod ki lehet ez a titokzatos idegen, aki hasonló különleges eseményeket produkál a táborban.</p><p> Ez lesz játékod célja kedves játékos !!! Nyomozz és találd meg kivel állsz szemben !! Jó játékot !!!</p>";
+site107.addOption("tovább nézelődsz a helyiségben", function(){
+	site106.removeOption(site106o_a);
+	jump(site106);
+});
+
+site108 = new Site("site108");
+site108.description = "<p>Dobsz egy 50-est a tálkába, majd meggondolod magad és kicseréled egy 20-asra. Elvégre mégis halott a néni..- gondolod szolidárisan. Majd indulnál pössenteni, de szörnyülködve veszed észre, hogy a néni megmozdul. Lába kapálózik, keze kinyúlik, szemét kinyitja. A pedáns wc-s néni még holtában is teljesíteni akarja feladatkörét. Leszakítja magát a lámpáról és feléd indul. Ledermedsz félelmedben. A wc-s zombi néni elér és lerángatja a gatyád. Pisikaki ! - hörgi és letépi a pöcsöd, miközben púzódba helyezi karmos kezét, ami a szádon bukkan ki. Feltrancsíroztak !</p>";
+site108.deadend = true;
+
+site109 = new Site("site109");
+site109.description = "<p>A néni zsákként nyikorog a pislákoló villanykörte zsinórjáról. Köpenye zsebeiben semmit nem találsz, kicsit megtapogatod a melleit. Majd a lejjebb haladsz , de a pállott harisnyája se rejt titkokat. Azonban a vastag, kérges, puffadt, sárgás, sajtszerű talpain észreveszel valamit.  Mintha valaki csinált volna valamit a néni sarkaival, azonban olyan vastag a felesleges bőrréteg rajta, hogy nem tudod megállapítani mi az.</p>";
+site109.addOption("Visszatérsz a helyiségbe nézelődni.", function(){
+	jump(site106);
+});
+site109.addToolRelay("sajtreszelő", function(){
+	sajtreszelo.owned = false;
+	jump(site111);
+});
+
+site110 = new Site("site110");
+site110.description = "<p>Rocky !!!! - kiáltod - érted tettem ... Belököd kicsit a nénit, majd elkezded kloffolni. Helyezgeted az ütéseket a zsíros szétmállott testére. Nagy lila foltokat hagysz. Tehetetlen teste hatalmasakat csattan és valami zöld lé is fröcsög belőle. Kigyakorlod magad, majd elégedetten körbetáncolod.</p><p>Rockyyy !!</p>";
+site110.addOption("Tovább nézelődsz a wc-ben.", function(){
+	site106.removeOption(site106o_d);
+	jump(site106);
+});
+
+var kodosau = new Tool("kód OSAU");
+site111 = new Site("site111");
+site111.description = "<p>Lereszeled a néni lábáról a felesleges bőrdarabkákat és ekkor nyilvánvaló lesz, hogy valaki egy üzenetet rejtett a néni sarkába. Pontosabban egy cetlit melyen a következő felirat olvasható : OSAU   Hmm ez talán egy kód. elteszed a cetlit, majd elhagyod az épületet</p>";
+site111.addOption("fakkyeah!", function(){
+	site106.removeOption(site106o_c);
+	kodosau.owned = true;
+	jump(site106);
+});
+
 
 site120 = new Site("TORNATEREM");
 site120.description = "<p>Besétálsz az Árok party fő helyiségébe. A tornaterem tömve van asztalokkal, melyeket C64ek, Amigák és különböző retrokütyük borítanak, az egész egy kábeldzsungel. Szemben a kisszínpad felett egy kivetítő van, amin valami retro játékverseny folyik. Alatta az egyik sarokban pedig Elvira a 2017-es év házigazdanője feszít szokásosan elragadó, csábós, testhezálló , combnál felhasított fekete gönceiben és harisnyában, óriási dekoltázzsal párosítva hozzá való dinnyékkel. Épp egy interjú előtt van valakivel és a részleteket beszélik meg. A hozzád közeli sarokban egy hűtőt veszel észre. Komoly számítógépezés is folyik, egy joystickot, klaviatúrát püfölő figura hívja fel a figyelmed, valamint egy óriási agy előtt kuporgó zseni kinézetű programozó.</p>";
