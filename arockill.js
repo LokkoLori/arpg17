@@ -220,6 +220,7 @@ site24.addOption("Visszatérsz a parkolóba suttyoskódni.", function(){
 	jump(site22);
 });
 
+var nagyito = new Tool("nagyító");
 site25 = new Site("site25");
 site25.description = "<p>Az autó alól kilógó lábakat alvadt vértócsa veszi körbe. Óvatosan megállsz a szélén, nehogy a talpadon lévő lukon felszivárogjon a zoknidba.<br/>Elnézést khmm - köszörülöd meg a torkod. - Jól vannak ? Mivel nem érkezik válasz belerúgsz az egyik lábba, melyről lerepül a cipő és szakadt zoknijából, mint egy kis krumpli, kilátszik a nagylábujja. Furcsa zúzódást veszel rajta észre, de szabad szemmel nem tudod kivenni a részleteket. Talán szükséged lenne valamire amit itt használhatnál? Igen kedves játékos, ismét segítséget kaptál a játék készítőitől, itt tárgyat kell használnod. Közben elgondolkozol azon, hogyan történhetett ez meg ? Ki ütötte el ezeket az embereket? Talán az volt a bűnük, hogy windowzosok voltak? Talán ez a játék célja? Igen, kedves játékos, a játék célja, hogy a táborban előforduló furcsa eseményeket kinyomozd, mert 2 sör között nem hagynak nyugodni :) Mentsd meg a többi táborlakót az őket fenyegető veszedelemtől ! Gratula, ezzel túlestél egy újabb tanító részen ! :)</p><p><b>Nyomozásra fel !</b></p>";
 site25.addToolRelay("nagyító", function(){
@@ -328,10 +329,180 @@ site36.openAction = function(){
 site40 = new Site("SZÍNPAD");
 site40.description = "<p>Kisétálsz a központi épület mögé, ahol a hátsó falhoz egy színpad kapcsolódik. A színpadon szétszórva egy-két hangláda és hangszer pihen. Valószínűleg itt buli lesz este ! Már a gondolatra is megszomjazol ! Az egyik erősítőn valaki üldögél, arca a kezeibe temetve és mintha sírna. A színpad oldalában pedig egy furcsa kis ajtót látsz. Néhány ajkai polgár is lézeng a színpad környékén, akik valószínűleg az esti koncertekre kíváncsiak.Az épület tetején, a színpad felett egy rozsdás szélkakas nyikorog. Furcsa hűvös szél árad a fák felől. Érzed, hogy valami készül, valamilyen rossz akarat lebeg a hely felett. Érzed, hogy valami történni fog mikor leszáll az est, de az még odébb van.</p><p><b>Mit teszel?</b></p>";
 addFieldaction(site40);
+var site40o_a = site40.addOption("Beszélni próbálsz a síró alakkal", function(){
+	jump(site41);
+});
+var site40o_b = site40.addOption("Beszélni próbálsz a helyiekkel", function(){
+	jump(site42);
+});
+var site40o_c = site40.addOption("Játszani próbálsz az egyik hangszeren", function(){
+	jump(site43);
+});
+var site40o_d = site40.addOption("Megvizsgálod a kis ajtót", function(){
+	jump(site44);
+});
+var site40o_e = site40.addOption("Vársz estig", function(){
+	jump(site45);
+});
+
+var makaronio = new Tool("makaróni");
+site41 = new Site("site41");
+site41.description = "<p>Miért sírsz haver?-kérded és megkopogtatod a haver fejét. Felnéz és ekkor veszed észre, hogy a keze tiszta görcs és puffadás. <br/>-Veled meg mi történt ? Zokogva kezd mesélni <br/>- Egész este egy szar szöveges kalandjátékot írtam és teljesen kikészültek az ujjaim. Most hogy fogok este zenélni? Megnyugtatod, hogy megpróbálsz rajta segíteni.</p>";
+site41.addOption("visszatérsz a színpad elé", function(){
+	jump(site40);
+});
+site41.addToolRelay("makaróni", function(){
+	jump(site50);
+});
+
+var erikac64cdje = new Tool("Erika C64 CD-je");
+site42 = new Site("site42");
+site42.description = "<p>Adj Isten parasztok ! Ne ijedjetek meg - köszöntöd barátságosan a helyi bumburnyákokat.<br/>- Fogadj Isten nagyuram- szól az egyik embör a bajsza alól.<br/>- Uraságod is zenész? - kérdezik köréd gyűlve a helyiek, hosszú majomszerű karjaikat lóbálva, elkorcsosult járásukkal.<br/>-Nem, nem- mondod mosolyogva a mosdatlan purgyéknak.<br/>- Na az nagy kár - vakkantja a bajszos. Úgy tűnik ő az egyetlen a csapatban, aki tud beszélni.- Estve 8tú lösz Erika C64 szúlamaira Ninja Tibi táncverziója, 9tű pedig Ninten Tóbi és a Szuper Diszkó Mámorusz. Űket várjuk !- mondják izgatottan röfögve.</p><p>Meglepődsz, hogy ezeknek a világtól elzárt tahóknak egész jó az ízlésük.</p>";
+site42.addOption("megunod és ott hagyod őket", function(){
+	jump(site40);
+});
+site42.addToolRelay("Erika C64 CD-je", function(){
+	jump(site49);
+});
+
+site43 = new Site("site43");
+site43.description = "<p>Felkapsz egy gitárt és pengetni kezded. Az ujjaid megbolondítják a húrokat, ahogy rázendítesz egy régi kedvenc amiga dallamra. Teljesen beleéled magad és észre sem veszed, ahogy az ujjaid füstölni kezdenek. A gitárod egy kis készülékhez van csatlakoztatva, aminek kijelzőjén furcsa adatok cikáznak. 85 %-os feltöltődés- jelenti be egy géphang. Tovább játszol és pont az utsó refrénhez érsz, amikor 100 %-os töltöttséget jelez a gép. Ekkor egy elektromos kisülés csap ki belőle, végigfut a kábelen és a gitáron át beléd vágódik. Zigidigidi- préseled ki fogaid közül és egy kis füst kíséretében eltűnsz.</p><p>Hirtelen óriásinak látod a színpadot és rádöbbensz, hogy bekerültél a gépbe és a monitoron bámulsz kifelé.Egy elektromos emberke lettél ! Valaki szándékosan hagyta itt ezt a csapdát neked !</p><p> Hihetetlen kalandjaid hihetetlen véget értek !!!</p>";
+site43.deadend = true;
+
+site44 = new Site("site44");
+site44.description = "<p>Mi lehet ez a kis ajtó- töprengesz és odatérgyepelsz a színpad oldalához. Kilincset, csengőt nem látsz rajta, ezért bekopogsz.<br/>- Ki az ? - kérdezi egy érdekesen mély magas hang.<br/>Kinyílik az ajtó és egy kis szakállas manó dugja ki rajta a fejét piros kockás pólóban.<br/>-Hát te ki vagy ?- érdeklődsz.<br/>-Én vagyok a számítógépalkatrészevő piroskockáspólós manó- mondja és kitárja az ajtót. - Fáradj beljebb ! - invitál és kivillantja tűhegyes fogacskáit.</p>";
+site44.addOption("Bekúszol a színpad alá a számítógépalkatrészevő piroskockáspólós manóhoz", function(){
+	jump(site46);
+});
+site44.addOption("Visszamész a színpad elé nézelődni", function(){
+	jump(site40);
+});
+
+site45 = new Site("site45");
+site45.description = "<p>Vársz. vársz, de nem történik semmi. Ebben a játékban valószínűleg nem így telik az idő :)</p>";
+site45.addOption("Csezd meg!", function(){
+	site40.removeOption(site40o_e);
+	jump(site40);
+});
+
+site46 = new Site("site46");
+site46.description = "<p>Egy sötét kis helyiségbe jutsz, melyet a színpad deszkái közt beszűrődő fény világít meg. A helyiség padlótól a kis plafonig tele van számítógépkacatokkal. Chiphuzalokból készült a hintaágy. Számítógépházakból a szekrények és komódok és egy kis nintendo kijelző funkcionál TVként. <br/>-Légy üdvözölve !- kiált a manó boldogan és körbemutat, majd lehuppan néhány vezetékre. <br/>- Így éldegélek én itt a számítógépes szemétben és meg is eszem ! Nyam nyam, kedvencem a klaviatúra. Csak úgy ropogtatom a billentyűket-fejezi be mondandóját. <br/>Milyen kedves kis teremtmény - suhan át az agyadon.</p>";
+site46.addOption("Szeretnél még beszélgetni vele", function(){
+	jump(site47);
+});
+site46.addOption("Távozol", function(){
+	jump(site47);
+});
+site46.addToolRelay("klaviatúra", function(){
+	jump(site48);
+});
+
+
+site47 = new Site("site46");
+site47.description = "<p> A kedves kis manó odalép hozzád , majd leharapja a fél arcodat és csámcsogni kezd. Persze ha nincs klaviatúra-böfögi- akkor jó lesz a csontropi is. Döbbenten bámulod, ahogy felzabál, mivel a szemgolyóidat hagyja utoljára az esti koktéljához. Végül azt is kiszürcsöli, közben a Nintendón nézi a híreket. Kalandod itt véget ért ! A számítógépalkatrészevő piroskockáspólós manó vacsorája lettél! BÖFFF</p>";
+site47.deadend = true;
+
+var lazer = new Tool("lézer");
+site48 = new Site("site48");
+site48.description = "<p>A manócska vidáman kezdi zabálni a billentyűzetet.<br/>-Mmmm már nagyon éhes voltam.- közli miközben bedobja az Esc gombot,  mint egy cukorkát. - Kedvencem az Enter, azt  mindig a végére hagyom... - kacsint rád. - Hadd adjak neked cserébe valamit ..-sipítja miután végzett az ebédjével. Felpattan és guberálni kezd a kacatokban.<br/>-Nézd, ezt a kis felkapcsolható lézert nemrég találtam az erdőben, valószínűleg UFO eredetű, még hasznodra lehet ! - azzal átnyújt egy kis lézereszközt, melyet úgy tűnik fel lehet erősíteni valamire.</p><p> Megköszönöd, majd jobbnak látod magára hagyni az örökké éhes kis zabagépet.</p>";
+site48.addOption("Visszatérsz a színpad elé flangálni.", function(){
+	site40.removeOption(site40o_d);
+	lazer.owned = true;
+	jump(site40);
+});
+
+var sajtreszelo = new Tool("sajtreszelő");
+site49 = new Site("site49");
+site49.description = "<p>Óóóó- hördülnek fel a parasztok a nagycsöcsös CD borító láttán. - Nem tudunk cserébe adni semmit, talán ezt az ócska sajtreszelőt, ezzel szoktam reszelni a lábamról a sárga bőrkeményedéseket..- mondja a beszélni tudó troglodita.</p><p>Fintorogva beleegyezel a cserébe.</p>";
+site49.addOption("magukra hagyod a fellelkesült rajongókat", function(){
+	erikac64cdje.owned = false;
+	sajtreszelo.owned = true;
+	site40.removeOption(site40o_b);
+	jump(site40);
+});
+
+site50 = new Site("site50");
+site50.description = "<p>Beledugod a kis ember ujjait a makaróniba és azok lassanként felengednek, lepuffadnak. <br/>- A nedves tészta jót tesz kezeinek ! <br/>- Köszönöm a segítséget ! Hogyan hálálhatnám meg ? - kurjongat a kivirult zenész.- Fogadd el kérlek kedvenc nagyítómat, még segíthet neked !<p>Megköszönöd az ajándékot</p>";
+site50.addOption("visszatérsz a színpad elé.", function(){
+	makaronio.owned = false;
+	nagyito.owned = true;
+	site.removeOption(site40o_a);
+	jump(site40);
+});
+
+
 
 site55 = new Site("ZENESÁTOR");
 site55.description = "<p>Egy igénytelen, szakadtas katonai sátor közelébe érsz. Körülötte és benne padok és asztalok szanaszét. Az asztalok csordultig vannak sörösdobozokkal, borosüvegekkel, rögtönzött hamutartókkal és mindenféle szeméttel. Jópáran üldögélnek itt és úgy tűnik nem most kezdték a piálást. Üvöltözve röhögcsélnek és bárgyú történeteket mesélnek. A sátor hátsó sarkában különböző zenecuccokat látsz, meg egy rakat CD-t. Az egész sátrat és környékét betölti a dübörgő metál zene. Valaki a sátor mögött a saját hányásában fekszik és egy kissrácot is látsz rohangálni vízipisztollyal. Idelátszik a focipálya és a tornaterem főbejárata.</p>";
 addFieldaction(site55);
+site55o_a = site55.addOption("Beszédbe elegyedsz a részegeskedőkkel", function(){
+	jump(site56);
+});
+site55o_b = site55.addOption("Beszélsz a szaladgáló gyerekkel", function(){
+	jump(site57);
+});
+site55o_c = site55.addOption("Keresel pia és cigimaradékokat és feléled", function(){
+	jump(site58);
+});
+site55o_d = site55.addOption("Megvizsgálod a zenecuccot és a lemezeket", function(){
+	jump(site59);
+});
+site55o_e = site55.addOption("Megvizsgálod a hányásában fekvő alakot", function(){
+	jump(site60);
+});
+
+var limonade = new Tool("limonádé");
+site56 = new Site("site56");
+site56.description = "<p>Kiderül, hogy a hangoskodó társaság csak egy csapat kiscserkész és limonádéval is megkínálnak. Mivel részeg vagy, most nem kívánod. Elteszed későbbre.</p>";
+site56.addOption("visszatérsz a sátor elé nézelődni.", function(){
+	limonade.owned = true;
+	site55.removeOption(site55o_a);
+	jump(site55);
+});
+
+site57 = new Site("site57");
+site57.description = "<p>Hé. kiscsávó ! - szólsz a kölöknek, mire nevetve fejbelő a vízipisztollyal és elszalad. Egy darabig kergeted a sátor körül, majd feladod.</p>";
+site57.addOption("Visszatérsz nézelődni a sátor elé.", function(){
+	site55.removeOption(site55o_b);
+	jump(site55);
+});
+
+
+site58 = new Site("site58");
+site58.description = "<p>Módszeresen átvizsgálod az asztalokat, míg találsz még viszonylag hideg söröket, amik nem fáradtak be. Összeöntöd őket egy félig megivott borral, majd letarhálsz valakit cigivel. Elégedetten pöfékelsz a piát kortyolgatva.</p>";
+site58.addOption("Tovább piálgatsz", function(){
+	jump(site61);
+});
+site58.addOption("Készítesz egy dobit", function(){
+	jump(site62);
+});
+site58.addOption("Visszatérsz a sátor elé nézelődni", function(){
+	jump(site55);
+});
+
+site59 = new Site("site59");
+site59.description = "<p>Közelebb mész a sarokban álló padhoz, ahol a hangfalak dübörögnek: A közepén egy számítógép és mindenféle lemezek. Hirtelen egy kis köpcös alak ugrik fel a túloldalán.<br/>- Hé, mi van pöcs ? Itt én vagyok a dj. Na húzzál innen !</p>";
+site59.addOption("oké", function(){
+	jump(site55);
+});	
+site59.addToolRelay("kiscica", function(){
+	kiscica.owned = false;
+	site55.removeOption(site55o_d);
+	jump(site68);
+});
+
+site60 = new Site("site60");
+site60.description = "<p>Úgy tűnik, hogy a fekvő részegnek nem sok ideje van hátra. Kiveszed a kezéből a sörösüveget és megiszod a maradékot. Ne menjen kárba ! Leböffented a fejét és rácsulázol.</p>";
+site60.addOption("Beletaposod a fejét a sárba", function(){
+	jump(site69);
+});
+site60.addOption("Átkutatod", function(){
+	jump(site70);
+});
+site60,addOption("Visszatérsz nézelődni a sátor elé", function(){
+	jump(site55);
+});
+
 
 site75 = new Site("FOCIPÁLYA");
 site75.description = "<p>A focipályán fekszenek néhányan akik a hőségtől szívinfarktust kaptak, egyébként a terep elég elhagyatottnak tűnik.  Hortyogás üti meg a füled és egy dagadt kékzöld macskamackó szerű pokémont veszel észre az egyik fa alatt szundítani. Snorlax az ! Tőle nem messze vakondtúrásokat látsz, az egyik kapuban pedig egy leeresztett futball labdát.</p>";
