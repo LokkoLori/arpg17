@@ -1207,8 +1207,9 @@ site150 = new Site("site150");
 site150.description = "<p>Megveted a talpad és bekészíted a LézerShuriken lövő Joystickot. A bejárat ekkor összeomlik és a tetőszerkezet is megremeg. Több tucat ember sikoltozik, ahogy leszakadnak a testrészeik, majd a szájuk is, így nem sikoltoznak tovább. Úgy érzed magad, mint egy kibaszott szuperhős.</p><p>Eddig eljutottál ebben a szar játékban, most nem fogod feladni, várjon rád bármi.</p><p>A tornaterem teteje recseg-ropog és a kivetítőnél egy dinoszaurusz dugja be a pofáját. Mintha csak egy megelevenedett játék lenne, egy rémálom 3D-s verziója. Rád tátja ocsmány, fél méteres fogszilánkokkal tűzdelt pofáját és szédítő hangorkán kíséretében felvisít, dögletes hússzagot lehelve magából. Elvira felsikít.<br/>- Ments meg, ments meg ! - csábosan izgeti magát, harisnyája felszakadt. </p>";
 site150.addOption("Odaszaladsz, hogy megmentsd Elvirát", function(){
 	jump(site151);
+});
 site150.addOption("Elkezded szidni a dinoszauruszt", function(){
-	jump(site15);
+	jump(site156);
 });
 
 site151 = new Site("site151");
@@ -1293,7 +1294,7 @@ site165.deadend = true;
 
 site166 = new Site("site166");
 site166.description = "<p>Ó jee - adod a ritmust a lábaddal, a hangosítók csutkán vannak. Elkezded pengetni a LézerShuriken lövő Joystickot mint valami űrgitárt a jövőből. Megjelenik melletted a zenész, akinek a kezein segítettél és ő is gitározni kezd. Ekkor megjelenik a doboknál a takarítónő szelleme a és félelmetes dobolásba kezd. A dínó volt, mondja, aki miatt ő felakasztotta magát, mert titokban összekakálta a WC-t fertelmes bűzével. És a dínó dobta a parkolóban az autót a népekre. Oldalról beszalad az István a király pólós csöves is.<br/>- Eladtam az összes limonádét ! - kiáltja boldogan és felkap egy gitárt. Immár teljes a banda.</p><p>Elkezditek a prehisztorikus ősrockot !! Badunga, badunga Dinoszaur haza !</p><p>A felétek rohamozó dinoszaurusz már csak méterekre van, amikor különleges energiapajzs veszi körbe a zenekarotokat . A zenélés erejével életre hívtatok egy ősi mágiát. Egy óriási energianyaláb csap ki a titeket övező felhőből és nekivágódik a dínónak pont mielőtt egészben bekapná az egész színpadot.</p><p>Egy pillanatra visszautaztok az időben és látjátok, hogy a dinoszaurusz saját korába érkezett, ahol boldogan játszik a dinoszaurusz családjával. Ekkor ti újra a színpadra kerültök és a veszélyből feocsúdott árok partisok és ajkarendeki vendégek odagyűlnek elétek.</p><p>A zenekar pedig hajnalig játszik, majd tovább, 3 napon keresztül. Óriási buli keveredik, összeházasodsz Elvirával, több gyereketek születik, az egyik közülük feltalálja a világbékét.</p><p>A zenekar első lemeze Barlangrajzok címen megjelenik és hatalmas sikert arat a világ fejletlenebb pontjain, főként az Aamazonas vidékén, ahol következő kannibálos játékunk fog játszódni. Figyeld a reklámokat!</p><p>Gratulálok, teljesítetted a gamét és minden jó ha jó a vége. Köszönjük a ráfordított idődet, reméljük szórakoztatónak találtad.</p><p>Nézd meg a többi befejezést is, találkozunk jövőre is az Árok parton... bocs, partin. </p>";
-site166.deadend = "THE END"
+site166.deadend = "THE END";
 
 resursite = new Site("resurr");
 resursite.description = "<p>Szent Péter megvető pillantást vet rád.<br/>-Azt hitted fiam, hogy ennyivel megúsztad? Dehogy! Takarodj vissza a homályba, és folytasd a kalandot!";
