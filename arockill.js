@@ -186,7 +186,7 @@ site22.openAction = function(){
 };
 site22.closeAction = function(){
 	rightpointer.style.display = "none";
-	closefiled();
+	closefield();
 };
 var site22o_a = site22.addOption("Beszédbe elegyedsz az itt lézengőkkel", function(){
 	jump(site23);
