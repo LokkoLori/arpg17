@@ -1136,7 +1136,7 @@ site143.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", func
 site143.addToolRelay("joystick", function(){
 	jump(site144);
 });
-site143.addToolRelay("LézetShurikenLövő Joystik", function(){
+site143.addToolRelay("LézetShurikenLövő-Joystick", function(){
 	jump(site146);
 });
 
@@ -1160,14 +1160,14 @@ site145.addToolRelay("lézer", function(){
 });
 
 
-var lazershurikenlovojoystik = new Tool("LézetShurikenLövő Joystik");
+var lazershurikenlovojoystick = new Tool("LézetShurikenLövő-joystick");
 site146 = new Site("site146");
 site146.description = "<p>Fegyver kész ! - mondja az agy és kiad magából egy LézerShurikenlövő Joystickot ! Elteszed a hiperfegyvert.Ebben a pillanatban azonban óriási döndülés hallatszik az épületen kívülről !</p>";
 site146.openAction = function(){
 	lazer.owned = false;
 	joystick.owned = false;
 	shuriken.owned = false;
-	lazershurikenlovojoystik.owned = true;
+	lazershurikenlovojoystick.owned = true;
 };
 site146.addOption("Szaladsz a kijárat felé", function(){
 	jump(site147);
@@ -1196,7 +1196,7 @@ site150.addOption("Odaszaladsz, hogy megmentsd Elvirát", function(){
 site151 = new Site("site151");
 site151.description = "<p>Áttörsz a tömegen Elvira felé, félrerúgva az utadba kerülő C64 rajongókat. Valakinek kiütöd a fogát, valakinek betöröd az orrát, egy másiknak a hátára ugrasz és onnan rugaszkodsz álmaid asszonya felé.<br/>- Elviraaaaa - bömbölöd lassított felvételként, mint egy rossz akcióhős.  - Szerelmem.... ! - látod, hogy Elvira szemében könnyek csillognak ekkora önfeláldozás láttán. De azért a combokért bármit megtennél. Egy olyan nőci, mint ő, aki a horrorfilmes és a játékiparba is betört, megérdemli, hogy megmentsék és hogy benne legyen ebben a játékban. Ráadásul még pár szar videoklipet is készített.</p><p>Ebben a pillanatban a dinoszaurusz bekapja Elvira felső testét és kettéharapja. Reccsenés hallatszik, ahogy Elvira darázsdereka elválik szép hosszú combjaitól. </p>";
 site151.addOption("Megpróbálod megmenteni Elvira maradék lábait", function(){
-	jump(site151);
+	jump(site152);
 });
 site151.addOption("Dühödten a dínó ellen fordulsz", function(){
 	jump(site153);
@@ -1270,7 +1270,7 @@ site164.addOption("Benyomod  az erősítőket és énekelni kezdesz", function()
 });
 
 site165 = new Site("site165");
-site165.description = "<p>Elrugaszkodsz a levegőbe de a dinoszaurusz gyorsabb nálad. A levegőben kettéharap és jóízűen elrágcsál, majd a háztetőn lévő kis szélkakassal kipiszkálja a fogait. Ezután folytatja Ajkarendek módszeres lemészárlását. Másnap elfoglalja a világot és kilép az űrbe. Harmadnap megküzd Supermannel és őt is legyőzi. Negyedik nap legyőzi Istent és a világ, ahogy ismertük, nincs többé. Elérkezik a végső visszaszámlálás kora. Majd az is elmúlik. És mi történik ezután? Megtudhatod az Árok Maniac 2ből !!</p><p> De most sajnos meghaltál...</p>";
+site165.description = "<p>Elrugaszkodsz a levegőbe de a dinoszaurusz gyorsabb nálad. A levegőben kettéharap és jóízűen elrágcsál, majd a háztetőn lévő kis szélkakassal kipiszkálja a fogait. Ezután folytatja Ajkarendek módszeres lemészárlását. Másnap elfoglalja a világot és kilép az űrbe. Harmadnap megküzd Supermannel és őt is legyőzi. Negyedik nap legyőzi Istent és a világ, ahogy ismertük, nincs többé. Elérkezik a végső visszaszámlálás kora. Majd az is elmúlik. És mi történik ezután? Megtudhatod az Árok FirPg! 2ből !!</p><p> De most sajnos meghaltál...</p>";
 site165.deadend = true;
 
 site166 = new Site("site166");
