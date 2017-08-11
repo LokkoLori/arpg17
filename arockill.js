@@ -43,29 +43,15 @@ site7.description = "<p>Már nem vagy messze. Sok degenerált falut elhagytál P
 site7.addOption("bal zsebedben keresed", function(){
 	jump(site8);
 });
-site7.addOption("jobb zsebedben keresed", function(){
+site7.addOption("jobb zsebedben keresed", function(){2
 	jump(site9);
 });
 
-var soroskupak = new Tool("söröskupak");
 var fogpiszkalo = new Tool("fogpiszkáló");
-var diszkoszseton = new Tool("diszkós zseton");
-var fikaszsepi = new Tool("fikás zsepi");
-fikaszsepi.defaction = function(){
-	printc("egészségedre bammeg :)");
-}
-var kutyakakizacsko = new Tool("kutyakakis zsacskó");
-var bolcsessegfog = new Tool("bölcsesség fog");
-
-var site8 = new Site("site7");
+var site8 = new Site("site8");
 site8.description = "<p>Keresgéled a zsebedben hova is tetted. Egy söröskupak, egy fogpiszkáló, valami diszkós zseton,egy iszonyat fikás zsebkendő, kutyakaki zacskó, a bölcsességfogad meg valami kenyérmorzsa után végre ráakadsz. Ufónak hívják és valami lila cucc. Egy holland sztriptíztáncostól vetted, úgy hívták Van melle de Hol. Elpattintod a zsöllyét és máris mintha egy sárga tengeralattjárón utaznál a Beatlesszel. Vagy az Iron Maiden magángépén Dallas felett. Tök mindegy, most még Ellie fél csöcse is tetszene. Szar ez a világ és minden amit tőled érdemel az a hányásod. Nihilisztikus filozofálgatásod közben egy verda zavar meg, amely hajmeresztő sebességgel tép el melletted. A kormány után kapsz, le ne sodorjon az útról. A rendszámtáblát látod egy pillanatra : JCVD. Ki lehet ez a barom ?</p>";
 site8.openAction = function(){
-	soroskupak.owned = true;
 	fogpiszkalo.owned = true;
-	diszkoszseton.owned = true;
-	fikaszsepi.owned = true;
-	kutyakakizacsko.owned = true;
-	bolcsessegfog.owned = true;
 	site8.openAction = function(){};
 };
 site8.addOption("Bekapcsolod a turbót és utána hajtasz", function(){
@@ -80,7 +66,7 @@ site9.description = "<p>Addig keresgéled a rőzsét a zsebedben, hogy felcsavar
 site9.deadend = true;
 
 site10 = new Site("site10");
-site10.description = "<p>Nincs turbód te barom, ez nem egy autós játék. Vegyél nascart paraszt !</p>";
+site10.description = "<p>Nincs turbód te barom, ez nem egy autós játék. Vegyél Need For Speedet paraszt !</p>";
 site10.deadend = true;
 
 site11 = new Site("site11");
@@ -108,11 +94,9 @@ site12.addOption("Megiszod", function(){
 	jump(site13);
 });
 
-var kitortfog = new Tool("kitört fog");
 site13 = new Site("site13");
 site13.description = "<p>Szinte lassítva látod, ahogy a poharat a szádhoz emeled. Gyomrodban riadtan ugrik egyet egy ideg, amint a limonádéban úszó egyik morzsaszigetről egy meghatározatlan 9 lábú xenomorph bab fejest ugrik a limonádé mélyebb vizeibe. Egész kis strand van itt a poharadban !</p><p>Mmm, az első korty olyan, mintha sugárfertőzött fagyállót innál, a szemeid körbefordulnak a helyükön és helyet cserélnek. Agyadban elpattan egy ér és orrodból egy szomorú vércsepp hullik a limonádé tetejére. Bánatosan nézed, de anyád arra tanított, hogy ne végezz félmunkát, így lenyeled a maradékot. Az első hullámok mintha önálló életet élnének, majd valami töményebbet érzel ami a fogaid közé akad. A fogaidhoz nyúlsz, hogy lekapargasd a szennyeződést és egy óriási, csimbókos hajszálat fedezel fel, mely valószínűleg a koldus bőrkiütéses fejéről származik. Ahogy húzod kifele a fogaid közül a rárakódott csimbókrengeteg a szádban marad, kisebb falat sörkorcsolyaként. Virsli ízt is érzel és valami keményet. Ahogy ráharapsz kitörik egy fogad.</p><p>Phú mi esz?-kérded pöszén. Meglepetésedre a szádban egy budikulcsot találsz ! Kitört fogadat is megtartod.</p>";
 site13.openAction = function(){
-	kitortfog.owned = true;
 	site13.openAction = function(){};
 }
 site13.addOption("Áuu", function(){
@@ -140,7 +124,10 @@ site16.description = "<p>Kerékcsikorgást hallasz amint kilépsz a Tahó stopb�
 site16.deadend = true;
 
 site17 = new Site("site17");
-site17.description = "<p>Belefújsz a rebdőrsípba, mire a limonádéárus a tolvaj elé veti magát. Összegabalyodnak és elgurulnak egy lejtőn egy káromkodó porfelhőben.</p>";
+site17.description = "<p>Belefújsz a rebdőrsípba, olyan erővel, hogy kirepül a szádbó. Mire a limonádéárus a tolvaj elé veti magát. Összegabalyodnak és elgurulnak egy lejtőn egy káromkodó porfelhőben.</p>";
+site17.openAction = function(){
+	sip.owned = false;
+};
 site17.addOption("összetöröd a limonádéárus standját.", function(){
 	jump(site18);
 });
@@ -307,6 +294,7 @@ site34.openAction = function(){
 	kiscica.owned = true;
 };
 site34.addOption("vissza a parkolóba", function(){
+	site22.description = "<p>A parkolóban vagy. Ide hallatszik a tábor jövés-menése, zsongása. Táborozók pakolják ki-be cuccaikat az autókból. Érdeklődve pillantasz az egyik rendszámtáblára : JCVD ! Hmm ez már ismerős az útról, ez a barom száguldott el melletted. Az egyik autó alól viszont pár lábat látsz kikandikálni. Valószínűleg valaki ráhajtott a parkolóban beszélgetőkre. Innen könnyen megközelítheted a tábor többi helyszínét, valamint egy ajtó is nyílik a neked jobbra eső épületen, mely úgy tűnik nyitva lehet. A kiscica már nincs itt.</p>";
 	jump(site22);
 });
 
@@ -398,7 +386,7 @@ site46.addToolRelay("klaviatúra", function(){
 });
 
 
-site47 = new Site("site46");
+site47 = new Site("site47");
 site47.description = "<p> A kedves kis manó odalép hozzád , majd leharapja a fél arcodat és csámcsogni kezd. Persze ha nincs klaviatúra-böfögi- akkor jó lesz a csontropi is. Döbbenten bámulod, ahogy felzabál, mivel a szemgolyóidat hagyja utoljára az esti koktéljához. Végül azt is kiszürcsöli, közben a Nintendón nézi a híreket. Kalandod itt véget ért ! A számítógépalkatrészevő piroskockáspólós manó vacsorája lettél! BÖFFF</p>";
 site47.deadend = true;
 
@@ -414,9 +402,11 @@ site48.addOption("Visszatérsz a színpad elé flangálni.", function(){
 var sajtreszelo = new Tool("sajtreszelő");
 site49 = new Site("site49");
 site49.description = "<p>Óóóó- hördülnek fel a parasztok a nagycsöcsös CD borító láttán. - Nem tudunk cserébe adni semmit, talán ezt az ócska sajtreszelőt, ezzel szoktam reszelni a lábamról a sárga bőrkeményedéseket..- mondja a beszélni tudó troglodita.</p><p>Fintorogva beleegyezel a cserébe.</p>";
-site49.addOption("magukra hagyod a fellelkesült rajongókat", function(){
+site49.openAction = function(){
 	erikac64cdje.owned = false;
 	sajtreszelo.owned = true;
+};
+site49.addOption("magukra hagyod a fellelkesült rajongókat", function(){
 	site40.removeOption(site40o_b);
 	jump(site40);
 });
@@ -470,7 +460,7 @@ site57.addOption("Visszatérsz nézelődni a sátor elé.", function(){
 
 site58 = new Site("site58");
 site58.description = "<p>Módszeresen átvizsgálod az asztalokat, míg találsz még viszonylag hideg söröket, amik nem fáradtak be. Összeöntöd őket egy félig megivott borral, majd letarhálsz valakit cigivel. Elégedetten pöfékelsz a piát kortyolgatva.</p>";
-site58.addOption("Tovább piálgatsz", function(){
+var site58o_a = site58.addOption("Tovább piálgatsz", function(){
 	jump(site61);
 });
 site58.addOption("Készítesz egy dobit", function(){
@@ -500,6 +490,16 @@ site60.addOption("Átkutatod", function(){
 	jump(site70);
 });
 site60.addOption("Visszatérsz nézelődni a sátor elé", function(){
+	site58.removeOption(site58o_a);
+	jump(site55);
+});
+
+site61 = new Site("site61");
+site61.description = "A többiek hoznak neked pár sört, mert látják, hogy csóróskodsz és tekernek cigit is. Kellemes órácskát töltesz el üldögéléssel.";
+site61.addOption("Most készítesz egy dobit", function(){
+	jump(site62);
+});
+site61.addOption("Visszatérsz a sátor elé nézelődni", function(){
 	jump(site55);
 });
 
@@ -596,7 +596,7 @@ var site75o_d = site75.addOption("Bemész az erdőbe kakálni", function(){
 	jump(site79);
 });
 var site75o_e = site75.addOption("Kicsit lasztizol", function(){
-	jump(site79);
+	jump(site80);
 });
 site75.addToolRelay("antennás kapcsoló", function(){
 	jump(site85);
@@ -647,8 +647,10 @@ site80.addOption("Visszatérsz a focipálya elé nézelődni.", function(){
 var kodrus = new Tool("kód RUS");
 site81 = new Site("site81");
 site81.description = "<p>Legyömöszölöd Snorlax torkán a főtt kutyát, mert olvastad valami hülye pokémon kézikönyvben, hogy ő nagyon szereti a kutyákat. :) Erre abbahagyja a hortyogást és kipattannak a szemei.<br/>-ÁÁáá te vagy az ?! - ásítja cseppet sem meglepetten, majd folytatja - Nos én a játék készítője vagyok, meglehetősen lusta teremtés. De tudtam, hogy jönni fogsz és ezért át kell adnom neked valamit. Tulajdonképpen azért alszom itt a játékban és van nálam ez a tárgy, mert lusta voltam még ezt is beleírni a játék történetébe. Szóval tessék ! - azzal átnyújt neked egy cetlit a következő felirattal : RUS. Hmmm ez is valami kód lehet... - nézegeted a cetlit majd bedobod a felszerelésed közé.</p>";
-site81.addOption("hagyod Snorluxot hadd pihenjen tovább", function(){
+site81.openAction = function(){
 	kodrus.owned = true;
+}
+site81.addOption("hagyod Snorluxot hadd pihenjen tovább", function(){
 	site75.removeOption(site75o_a);
 	jump(site75);
 });

@@ -1,39 +1,25 @@
 body{
-	background-color: #d1eaff;
-}
-
-#header{
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
-	border-bottom-color: #4c858a;
-	background-image: url("design/pattern.png");
-	padding: 0px;
-	width: 90%;
-	margin: auto;
-}
-
-#headerfade{
-	width: 100%;
-	height: 80px;
-	background-image: url("design/fade.png");
-	background-repeat: repeat-x;
-	text-align: right;
+	background-color: #000000;
 }
 
 #contentback {
-	background-color: #e1f2ff;
 	width: 900px;
-	height: 100%;
 	margin: auto;
 	position: relative;
+	font-family: "Comic Sans MS";
+	color: white;
+}
+
+b {
+	color: white;
 }
 
 #headerlogo{
-	width: 381px;
-	height: 124px;
-	background-image: url("design/maniacarok.png");
-	left: -80px;
-	top: -80px;
+	width: 200px;
+	height: 200px;
+	background-image: url("design/arokfirpg.png");
+	left: -220px;
+	top: 10x;
 	position: absolute;
 }
 
@@ -41,49 +27,42 @@ body{
 #picture img{
 	width: 100%;
 	height: 100%;
-	image-rendering: pixelated;
-}
-
-.layouter{
-}
-
-.optionbutton{
 }
 
 #picture{
-	width: 600px;
-	height: 400px;
+	width: 320px;
+	height: 200px;
 	padding: 10px;
 	position: absolute;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
 }
 
 #desc{
-	top: 400px;
+	top: 210px;
 	left: 0px;
 	position: absolute;
-	width: 600px;
-	padding: 10px;
-	font-family: "Arial";
-	text-align: justify;
+	width: 900px;
 }
 
 #places{
-	top: 400px;
-	left: 600px;
-	width: 300px;
+	top: 0px;
+	left: 550px;
+	width: 200px;
+	height: 200px;
 	position: absolute;
-	padding: 30 20 30 20;
+	padding: 10px;
 }
 
 #inventory{
 	top: 0px;
-	left: 600px;
-	width: 300px;
-	height: 400px;
-	padding: 20px;
+	left: 340px;
+	width: 200px;
+	height: 200px;
+	padding: 10px;
 	position: absolute;
 }
 
 #picture img{
-	image-rendering: pixelated;
 }
