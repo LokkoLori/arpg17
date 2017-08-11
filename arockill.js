@@ -7,6 +7,8 @@ starts.addOption("lehúzódsz mielőtt nagyobb baj lenne", function(){
 	jump(site6);
 });
 
+checkpoint = starts;
+
 
 var site3 = new Site("site3");
 site3.description = "<p>Ördögi mosollyal nehezkedsz rá a gázkarra lukas tornacipődben. Jövök szivi - ordítod , mint Jack Nicholson a Ragyogásban és a rendőr is valami ragyogó villanást lát, mielőtt hízott légyként szétplaccsan a szélvédődön. Hú ez csúnya volt- állapítod meg, majd nagyot nevetsz és érzed, hogy hátadból kiállt egy régi görcs. Á édes élet! Felpattintod az ablaktörlőt, hogy lesúrolja a maradék zokni, szemüveg és agyvelődarabokat. Szerencsére senki sem látott. A szélvédőre akadva egy rendőrsípot veszel észre.</p> <p><b>Mit teszel ?</b></p>";
@@ -144,6 +146,7 @@ site18.openAction = function(){
 };
 site18.addOption("irány a tábor", function(){
 	jump(site22);
+	checkpoint = site22;
 });
 
 function openfield(){
@@ -300,7 +303,7 @@ site34.addOption("vissza a parkolóba", function(){
 
 site35 = new Site("site35");
 site35.description = "<p>Odatérdelsz a zokniból kilógó lábujjhoz és a nagyítóval vizsgálgatni kezded. Hmmm Mintha valaki rejtett volna valamit a köröm alá. De szükséged van valamire amivel kipiszkálod.</p>";
-site35.addToolRelay("fogpiszkálo", function(){
+site35.addToolRelay("fogpiszkáló", function(){
 	jump(site36);
 });
 site35.addOption("Passz", function(){
@@ -309,10 +312,16 @@ site35.addOption("Passz", function(){
 
 var koddin = new Tool("kód DIN"); 
 site36 = new Site("site36");
-site36.description = "<p>A fogpiszkálóval felfeszíted a retkes lábujjat. Valaki egy cetlit rejtett ide ! Kitekered és a következő feliratot látod : DIN   Hmmm, ez valami kód lehet - gondolod magadban. Elteszed a cetlit és visszatérsz a parkolóba suttyóskodni.</p>";
+site36.description = "<p>A fogpiszkálóval felfeszíted a retkes lábujjat. Valaki egy cetlit rejtett ide ! Kitekered és a következő feliratot látod : DIN   Hmmm, ez valami kód lehet - gondolod magadban. Elteszed a cetlit.</p>";
 site36.openAction = function(){
 	koddin.owned = true;
+	fogpiszkalo.owned = false;
+	nagyito.owned = false;
 }
+site36.addOption("visszatérsz a parkolóba suttyóskodni.", function(){
+	site22.removeOption(site22o_c);
+	jump(site22);
+});
 
 site40 = new Site("SZÍNPAD");
 site40.description = "<p>Kisétálsz a központi épület mögé, ahol a hátsó falhoz egy színpad kapcsolódik. A színpadon szétszórva egy-két hangláda és hangszer pihen. Valószínűleg itt buli lesz este ! Már a gondolatra is megszomjazol ! Az egyik erősítőn valaki üldögél, arca a kezeibe temetve és mintha sírna. A színpad oldalában pedig egy furcsa kis ajtót látsz. Néhány ajkai polgár is lézeng a színpad környékén, akik valószínűleg az esti koncertekre kíváncsiak.Az épület tetején, a színpad felett egy rozsdás szélkakas nyikorog. Furcsa hűvös szél árad a fák felől. Érzed, hogy valami készül, valamilyen rossz akarat lebeg a hely felett. Érzed, hogy valami történni fog mikor leszáll az est, de az még odébb van.</p><p><b>Mit teszel?</b></p>";
@@ -393,9 +402,12 @@ site47.deadend = true;
 var lazer = new Tool("lézer");
 site48 = new Site("site48");
 site48.description = "<p>A manócska vidáman kezdi zabálni a billentyűzetet.<br/>-Mmmm már nagyon éhes voltam.- közli miközben bedobja az Esc gombot,  mint egy cukorkát. - Kedvencem az Enter, azt  mindig a végére hagyom... - kacsint rád. - Hadd adjak neked cserébe valamit ..-sipítja miután végzett az ebédjével. Felpattan és guberálni kezd a kacatokban.<br/>-Nézd, ezt a kis felkapcsolható lézert nemrég találtam az erdőben, valószínűleg UFO eredetű, még hasznodra lehet ! - azzal átnyújt egy kis lézereszközt, melyet úgy tűnik fel lehet erősíteni valamire.</p><p> Megköszönöd, majd jobbnak látod magára hagyni az örökké éhes kis zabagépet.</p>";
+site48.openAction = function(){
+	lazer.owned = true;
+	klaviatura.owned = false;
+};
 site48.addOption("Visszatérsz a színpad elé flangálni.", function(){
 	site40.removeOption(site40o_d);
-	lazer.owned = true;
 	jump(site40);
 });
 
@@ -416,7 +428,7 @@ site50.description = "<p>Beledugod a kis ember ujjait a makaróniba és azok las
 site50.addOption("visszatérsz a színpad elé.", function(){
 	makaronio.owned = false;
 	nagyito.owned = true;
-	site.removeOption(site40o_a);
+	site40.removeOption(site40o_a);
 	jump(site40);
 });
 
@@ -677,6 +689,7 @@ site84.description = "<p>Kiöntöd a nutellát a vakondtúrások mellé. A vakon
 site84.addOption("fakkyeah", function(){
 	site75.removeOption(site75o_b);
 	godzillababa.owned = true;
+	nutella.owned = false;
 	jump(site75);
 });
 
@@ -755,9 +768,10 @@ site93.deadend = true;
 
 var shuriken = new Tool("shuriken");
 site94 = new Site("site94");
-site94.description = "<p>Hadzsime ! -  kiáltod és védekezni kezdesz. A sárkány meglepetésszerűen érkezett, de most, hogy számítasz rá már nem ellenfél. Gyorsan széttöröd a sárkánymaszkot és a benne megbújó embert. Ekkor megjelenik Jean-Claude Van Damme. <br/>- Gratulálok ! Végigjártad a titkos mesterek próbáját. Ajándékod egy ősi ninja shuriken !.... - azzal elenyészik a füstben és még hallod a következőket <br/>- Sajnos az új filmjeim már elég bénák, ne nézd meg őket, inkább járj te is karatézni filmnézés helyett.</p></p>Megfogadod a jótanácsotó, majd visszaliftezel a focipálya szélére.</p>";
+site94.description = "<p>Hadzsime ! -  kiáltod és védekezni kezdesz. A sárkány meglepetésszerűen érkezett, de most, hogy számítasz rá már nem ellenfél. Gyorsan széttöröd a sárkánymaszkot és a benne megbújó embert. Ekkor megjelenik Jean-Claude Van Damme. <br/>- Gratulálok ! Végigjártad a titkos mesterek próbáját. Ajándékod egy ősi ninja shuriken !.... - azzal elenyészik a füstben és még hallod a következőket <br/>- Sajnos az új filmjeim már elég bénák, ne nézd meg őket, inkább járj te is karatézni filmnézés helyett. És kérem vissza az antennás kapcsolót.</p></p>Megfogadod a jótanácsotó, majd visszaliftezel a focipálya szélére.</p>";
 site94.addOption("fakkyeah", function(){
 	shuriken.owned = true;
+	antennaskapcsolo.owned = false;
 	jump(site75);
 });
 
@@ -790,6 +804,7 @@ site100.addToolRelay("budikulcs", function(){
 site101 = new Site("site101");
 site101.description = "<p>A bokorban egy letolt gatyájú alakot látsz, aki épp egy kibelezett C64 floppy lejátszóba tömködi a micsodáját. Ez az, mindjárt betöltődik ! Loading, run, kicsim run ! - hirtelen vér fröcsköl ki a gépből . - Syntax error - üvölti a perverz és eldől.</p>";
 site101.addOption("Úgy érzed eleget láttál.", function(){
+	site100.description = "Egy elhagyatott mellékszárny előtt állsz. A falak romosak, az ablakok néhol betörve, de mindenhol rács. Kísérteties fény szűrődik ki. A falon egy graffitit látsz : Az Árok egy szar.. felirattal. Előtted egy ajtó, megpróbálod, de zárva van. A bokor mozgását kizárja a tudatod."
 	site100.removeOption(site100o_a);
 	jump(site100);
 });
@@ -869,10 +884,13 @@ site110.addOption("Tovább nézelődsz a wc-ben.", function(){
 
 var kodosau = new Tool("kód OSAU");
 site111 = new Site("site111");
-site111.description = "<p>Lereszeled a néni lábáról a felesleges bőrdarabkákat és ekkor nyilvánvaló lesz, hogy valaki egy üzenetet rejtett a néni sarkába. Pontosabban egy cetlit melyen a következő felirat olvasható : OSAU   Hmm ez talán egy kód. elteszed a cetlit, majd elhagyod az épületet</p>";
+site111.description = "<p>Lereszeled a néni lábáról a felesleges bőrdarabkákat és ekkor nyilvánvaló lesz, hogy valaki egy üzenetet rejtett a néni sarkába. Pontosabban egy cetlit melyen a következő felirat olvasható : OSAU   Hmm ez talán egy kód. elteszed a cetlit, eldobod a budikulcsot, majd elhagyod az épületet</p>";
+site111.openAction = function(){
+	kodosau.owned = true;
+	budikulcs.owned = false;
+};
 site111.addOption("fakkyeah!", function(){
 	site106.removeOption(site106o_c);
-	kodosau.owned = true;
 	jump(site106);
 });
 
@@ -908,9 +926,12 @@ site121.addToolRelay("kulcs", function(){
 
 site122 = new Site("site122");
 site122.description = "<p>Bepattintod a zárba a kis elzett kulcsot és leoldod a lakatot.</p><p>Pár hetes ételmaradékok szaga csapja meg az orrod, ahogy kitárod a hűtő ajtaját. Miután beleeszel egy már szöszös jégkrémbe és leöblíted egy kis penészes kólával, csupán 2 hasznosnak tűnő dolgot találsz. Egy nutellás üveget és egy adag makarónit. Elteszed őket későbbre.</p>";
-site122.addOption("visszatérsz a tornaterem többi részébe vegyülni.", function(){
+site122.openAction = function(){
 	makaronio.owned = true;
 	nutella.owned = true;
+	kulcs.owned = false;
+};
+site122.addOption("visszatérsz a tornaterem többi részébe vegyülni.", function(){
 	site120.removeOption(site120o_e);
 	jump(site120);
 });
@@ -946,7 +967,7 @@ site125.addOption("Elbújsz egy aszteroida mögött, míg a többiek lövöldöz
 });
 
 site126 = new Site("site126");
-site126.description = "<p>Szembefordulsz üldözőiddel és belehajtasz a gépükbe. Sikeresen leszedsz a robbanással még 2 játékost, de neked is kampec. Lerakod a kontrollert és visszatérsz vegyülni a tömegbe.</p>";
+site126.description = "<p>Szembefordulsz üldözőiddel és belehajtasz a gépükbe. Sikeresen leszedsz a robbanással még 2 játékost, de neked is kampec. Lerakod a kontrollert.</p>";
 site126.addOption("Visszatérsz vegyülni a tornaterembe", function(){
 	jump(site120);
 });
@@ -961,7 +982,7 @@ site127.addOption("Próbálod megelőzni őket egy veszélyesebb ívű landolás
 });
 
 site128 = new Site("site128");
-site128.description = "<p>A leereszkedő űrhajók könnyű célpontok, de az egyik játékos megelégeli a trollkodásod és ellened fordul. Már nem is a céljával törődik, csak hogy téged levadásszon. Egy szerencsés lövedékkel megkarcolja hajód rakterét, amire a veszélyes plutónium robbanással reagál. Sajnos kiestél az izgalmas játékból. Visszatérsz vegyülni a tornaterem egyéb részeibe.</p>";
+site128.description = "<p>A leereszkedő űrhajók könnyű célpontok, de az egyik játékos megelégeli a trollkodásod és ellened fordul. Már nem is a céljával törődik, csak hogy téged levadásszon. Egy szerencsés lövedékkel megkarcolja hajód rakterét, amire a veszélyes plutónium robbanással reagál. Sajnos kiestél az izgalmas játékból.</p>";
 site128.addOption("Visszatérsz vegyülni a tornaterembe", function(){
 	jump(site120);
 });
@@ -975,6 +996,7 @@ site129.addOption("Visszatérsz a tornaterembe nézelődni", function(){
 site130 = new Site("site130");
 site130.description = "<p>Visszaveszel a sebességből és óvatosan ereszkedsz lefele. A többiek elhagynak, de a kapkodásuk miatt néhányan túl gyorsan ereszkednek a légkörbe, így elégnek. A többiek pedig nem mérik fel egy ionvihar helyzetét és a villámok végeznek hajóikkal. Te kényelmesen kiszámolod a megfelelő érkezési pont koordinátáit és leteszed a gépet. Sikeres küldetés ! Leszállítottad a piros plutóniumot. A többiek gratulálnak !</p>";
 site130.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	site120.removeOption(site120o_a);
 	jump(site120);
 });
 
@@ -984,7 +1006,7 @@ site131.addOption("Itt helyben magadévá teszed", function(){
 	jump(site132);
 });
 site131.addOption("Megkérdezed mikor lesz Elvira 3 amigára", function(){
-	jump(site132);
+	jump(site133);
 });
 site131.addOption("Inkább viszatérsz a tornaterem egyéb részeire", function(){
 	jump(site120);
@@ -992,6 +1014,9 @@ site131.addOption("Inkább viszatérsz a tornaterem egyéb részeire", function(
 
 site132 = new Site("site132");
 site132.description = "<p>Magadhoz rántod Elvirát és letéped éjfekete bugyiját. A pokol gyönyörei várnak rád ! Gratulálok  ! Elérted a játékban elérhető maximális pontszámot.</p>";
+site132.openAction = function(){
+	site120.removeOption(site120o_b);
+};
 site132.addOption("Megkérdezed mikor lesz Elvira 3 amigára", function(){
 	jump(site133);
 });
@@ -1038,7 +1063,14 @@ site136.addToolRelay("limonádé", function(){
 var joystick = new Tool("joystick");
 site137 = new Site("site137");
 site137.description = "<p>Látod, hogy a fickó szeme könnybe lábad, ahogy a Godzilla babáért nyúl. Ó kicsikém, mi történt veled ? Még tavaly vesztettem őt el itt a táborban, nem is reméltem, hogy előkerül. Fogadd cserébe ezt a joystickot.</p>";
+site137.openAction = function(){
+	joystick.owned = true;
+	godzillababa.owned = false;
+};
 site137.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
+	if (klaviatura.owned || lazer.owned){
+		site120.removeOption(site120o_d);
+	}
 	jump(site120);
 });
 site137.addToolRelay("limonádé", function(){
@@ -1048,9 +1080,14 @@ site137.addToolRelay("limonádé", function(){
 var klaviatura = new Tool("klaviatúra");
 site138 = new Site("site138");
 site138.description = "<p>Úgy teszel mintha véletlen lenne és rálögybölöd a limonádét a figura billentyűzetére. Ő sűrűn káromkodik, te pedig szabadkozol. Kihajítja a klaviatúrát egy kukába és elővesz egy másikat. Elteszed a klaviatúrát a felszerelésed közé.</p>";
-site138.addOption("fakkyeah!", function(){
-	site120.removeOption(site120o_d);
+site138.openAction = function(){
 	klaviatura.owned = true;
+	limonade.owned = false;
+};
+site138.addOption("fakkyeah!", function(){
+	if (joystick.owned) {
+		site120.removeOption(site120o_d);
+	}
 	jump(site120);
 });
 
@@ -1061,6 +1098,9 @@ site140.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", func
 });
 site140.addToolRelay("kód DIN", function(){
 	jump(site141);
+});
+site140.addToolRelay("Kód DINOSAURUS", function(){
+	jump(site143);
 });
 
 site141 = new Site("site141");
@@ -1081,13 +1121,23 @@ site142.addToolRelay("kód RUS", function(){
 	jump(site143);
 });
 
+var koddinosaurus = new Tool("Kód DINOSAURUS");
 site143 = new Site("site143");
 site143.description = "<p>Az agy beolvassa a harmadik cetlidet is. A következő felirat kezd el villogni a képernyőjén : DINOSAURUS   Az Ön ellenfele egy dinoszaurusz- mondja az agy gépies hangon. Pár percig kattog és füstöl, majd egy kép jelenik meg a kijelzőn. Alatta a dinoszaurusz elleni fegyver felirat olvasható. Úgy néz ki, mint egy botkormány, melyből valamilyen zöld színű csillagok repkednek ki. Kérem helyezze be a fegyver első alkatrészét ! - mondja az agy.</p>";
+site143.openAction = function(){
+	koddin.owned = false;
+	kodosau.owned = false;
+	kodrus.owned = false;
+	koddinosaurus.owned = true;
+};
 site143.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
 	jump(site120);
 });
 site143.addToolRelay("joystick", function(){
 	jump(site144);
+});
+site143.addToolRelay("LézetShurikenLövő Joystik", function(){
+	jump(site146);
 });
 
 site144 = new Site("site144");
@@ -1105,13 +1155,20 @@ site145.description = "<p>Behelyezed a fegyver második alkatérszét is. Kérem
 site145.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", function(){
 	jump(site120);
 });
-site144.addToolRelay("lézer", function(){
+site145.addToolRelay("lézer", function(){
 	jump(site146);
 });
 
 
+var lazershurikenlovojoystik = new Tool("LézetShurikenLövő Joystik");
 site146 = new Site("site146");
 site146.description = "<p>Fegyver kész ! - mondja az agy és kiad magából egy LézerShurikenlövő Joystickot ! Elteszed a hiperfegyvert.Ebben a pillanatban azonban óriási döndülés hallatszik az épületen kívülről !</p>";
+site146.openAction = function(){
+	lazer.owned = false;
+	joystick.owned = false;
+	shuriken.owned = false;
+	lazershurikenlovojoystik.owned = true;
+};
 site146.addOption("Szaladsz a kijárat felé", function(){
 	jump(site147);
 });
@@ -1220,4 +1277,9 @@ site166 = new Site("site166");
 site166.description = "<p>Ó jee - adod a ritmust a lábaddal, a hangosítók csutkán vannak. Elkezded pengetni a LézerShuriken lövő Joystickot mint valami űrgitárt a jövőből. Megjelenik melletted a zenész, akinek a kezein segítettél és ő is gitározni kezd. Ekkor megjelenik a doboknál a takarítónő szelleme a és félelmetes dobolásba kezd. A dínó volt, mondja, aki miatt ő felakasztotta magát, mert titokban összekakálta a WC-t fertelmes bűzével. És a dínó dobta a parkolóban az autót a népekre. Oldalról beszalad az István a király pólós csöves is.<br/>- Eladtam az összes limonádét ! - kiáltja boldogan és felkap egy gitárt. Immár teljes a banda.</p><p>Elkezditek a prehisztorikus ősrockot !! Badunga, badunga Dinoszaur haza !</p><p>A felétek rohamozó dinoszaurusz már csak méterekre van, amikor különleges energiapajzs veszi körbe a zenekarotokat . A zenélés erejével életre hívtatok egy ősi mágiát. Egy óriási energianyaláb csap ki a titeket övező felhőből és nekivágódik a dínónak pont mielőtt egészben bekapná az egész színpadot.</p><p>Egy pillanatra visszautaztok az időben és látjátok, hogy a dinoszaurusz saját korába érkezett, ahol boldogan játszik a dinoszaurusz családjával. Ekkor ti újra a színpadra kerültök és a veszélyből feocsúdott árok partisok és ajkarendeki vendégek odagyűlnek elétek.</p><p>A zenekar pedig hajnalig játszik, majd tovább, 3 napon keresztül. Óriási buli keveredik, összeházasodsz Elvirával, több gyereketek születik, az egyik közülük feltalálja a világbékét.</p><p>A zenekar első lemeze Barlangrajzok címen megjelenik és hatalmas sikert arat a világ fejletlenebb pontjain, főként az Aamazonas vidékén, ahol következő kannibálos játékunk fog játszódni. Figyeld a reklámokat!</p><p>Gratulálok, teljesítetted a gamét és minden jó ha jó a vége. Köszönjük a ráfordított idődet, reméljük szórakoztatónak találtad.</p><p>Nézd meg a többi befejezést is, találkozunk jövőre is az Árok parton... bocs, partin. </p>";
 site166.deadend = "THE END"
 
-
+resursite = new Site("resurr");
+resursite.description = "<p>Szent Péter megvető pillantást vet rád.<br/>-Azt hitted fiam, hogy ennyivel megúsztad? Dehogy! Takarodj vissza a homályba, és folytasd a kalandot!";
+resursite.addOption("Vissza az életbe", function(){
+	deathcounter++;
+	jump(checkpoint);
+});

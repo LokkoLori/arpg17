@@ -8,6 +8,8 @@ var places
 var tools = {};
 var sites = {};
 
+var deathcounter = 0;
+
 
 function clearchildren(node){
 	while (node.firstChild) {
@@ -111,9 +113,14 @@ Site.prototype.show = function(){
 	picture.innerHTML = "<img src='" + this.img + "'/>";
 	clearchildren(options);
 	clearchildren(console);
+	if (this.deadend == true && this.options.length == 0){
+		o = new Optionc("halál!", this, resurrect, 66);
+		o.button.onclick = resurrect;
+		this.options.push(o);
+	};	
 	for (var o of this.options){
 		options.appendChild(o.button);
-	}
+	}	
 	sitedescription.innerHTML = this.description;
 	actsite = this;
 };
@@ -151,7 +158,11 @@ function refresh(site){
 
 function jump(site){
 	refresh(site);
-}
+};
+
+function resurrect(){
+	jump(resursite);
+};
 
 function printc(text){
 	console.innerHTML += "<div>"+text+"</div>";
