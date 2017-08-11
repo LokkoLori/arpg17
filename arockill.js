@@ -637,6 +637,9 @@ site77.addOption("Megpróbálsz beszélgetni a vakondokkal", function(){
 site77.addOption("Visszatérsz a focipálya szélére", function(){
 	jump(site75);
 });
+site77.addToolRelay("nutella", function(){
+	jump(site84);
+});
 
 site78 = new Site("site78");
 site78.description = "<p>Elindulsz az egyik szöglettől, azonban nem veszed észre, hogy egy kosárpálya vonalait is felfestették. Figyelmetlenséged eredményeképpen sajnos eltévedsz és sosem találsz ki a beton focipályáról. Sikolyod az erdő sodorja  holdfényes éjszakákon. Sajnáljuk, de ez a meccs számodra véget ért !</p>";
@@ -778,7 +781,7 @@ site94.addOption("fakkyeah", function(){
 site95 = new Site("site95");
 site95.description = "<p>Beleolvadsz a ködbe, de a sárkányalak rád talál !!!</p>";
 site95.addOption("Karatézol vele", function(){
-	jump(site95);
+	jump(site94);
 });
 site95.addOption("Hagyod, hadd győzzön le", function(){
 	jump(site96);
@@ -1160,7 +1163,7 @@ site145.addToolRelay("lézer", function(){
 });
 
 
-var lazershurikenlovojoystick = new Tool("LézetShurikenLövő-joystick");
+var lazershurikenlovojoystick = new Tool("LézetShurikenLövő-Joystick");
 site146 = new Site("site146");
 site146.description = "<p>Fegyver kész ! - mondja az agy és kiad magából egy LézerShurikenlövő Joystickot ! Elteszed a hiperfegyvert.Ebben a pillanatban azonban óriási döndülés hallatszik az épületen kívülről !</p>";
 site146.openAction = function(){
