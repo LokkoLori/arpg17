@@ -149,6 +149,18 @@ function refresh(site){
 	}
 	clearchildren(inventory)
 	for (var t in tools){
+		var gotja = false;
+		for (var relay of site.toolrelays){
+			if (relay[0] == tools[t].name){
+				gotja = true;
+				break;
+			}
+		}
+		if (gotja){
+			tools[t].button.className = "usetool";
+		} else {
+			tools[t].button.className = "uselesstool";
+		}
 		if (tools[t].owned){
 			inventory.appendChild(tools[t].button);
 		}
