@@ -1261,7 +1261,7 @@ site163.description = "<p>Utánaveted magad az erdőbe menekülő szörnyetegnek
 site163.deadend = "THE END"
 
 site164 = new Site("site164");
-site164.description = "<p>Megveted a lábad és mint Duke Nukem sorozni kezded az Árok partit tönkretevő ősgyíkot. A lézershurikenek óriási sebeket ejtenek a dínó tátongó pofáján. Hé bébi ' - mondod -, kinek van nagyob tojása ?  Heréidet kellemes érzés feszíti, amint megaturbó fegyvereddel szétsorozod a dínópicsát.Felüvölt fájdalmában, majd menekülőre fogja a dolgot.</p>";
+site164.description = "<p>Elkezdesz vagizni a törmelékkupac tetején, mint a 4572es egomérettel rendelkező Duke Nukem. Az árok parti közönsége még elég véres és megviselt a félig rájuk omlott épület alatt, páran vértócsában fekszenek és segítségért nyöszörögnek. Néhányan megtapsolnak és ünnepelnek, mert elüldözted a dínót. Elvira a lábaid elé veti magát és megöleli combjaid, puha mellei szorosan neked nyomódnak.<br>- Ó hősöm - szipogja. Vagányan emeled fel a megaturbó fegyveredet a magasba, azonban ekkor megremeg az épület és óriási bömbölés hallatszik. A dinoszaurusz visszatért ! Kirohansz a hátsó ajtón és a tornaterem mögötti színpadon találod magad ! Előtted Ajkarendek fekszik és látod, hogy a fél falu ég , emberek sikoltoznak, a dínó pedig le-lecsap az emberek csoportjaira és élvezettel tömködi húsukat a pofájába. Hangos csámcsogása áthallatszik a tüzek ropogásán és az emberi szenvedés hangjain. Mint a kibaszott apokalipszis <br/>- Te ! Hé te ocsmány szarkupac ! - kiáltod és a dínóra mutatsz. A prehisztorikus lény felüvölt sértésed hallatán és dühödten tombolva indul feléd. Egyre gyorsítja iramát és dübörög alatta a föld, házakon gázol át, a boltot is legyalázza. <br/>- AAAAAaaargghhhh- üvölti feléd.</p>";
 site164.addOption("Felszaltózol a háztetőre és onnan nézel szembe a veszéllyel", function(){
 	jump(site165);
 });
@@ -1282,4 +1282,5 @@ resursite.description = "<p>Szent Péter megvető pillantást vet rád.<br/>-Azt
 resursite.addOption("Vissza az életbe", function(){
 	deathcounter++;
 	jump(checkpoint);
+	printc("feltámadások száma: " + deathcounter);
 });
