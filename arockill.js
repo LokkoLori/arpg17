@@ -179,7 +179,7 @@ function addFieldaction(fieldsite){
 }
 
 site22 = new Site("PARKOLÓ");
-site22.description = "<p>A parkolóban vagy. Ide hallatszik a tábor jövés-menése, zsongása. Táborozók pakolják ki-be cuccaikat az autókból. Érdeklődve pillantasz az egyik rendszámtáblára : JCVD ! Hmm ez már ismerős az útról, ez a barom száguldott el melletted. Az egyik autó alól viszont pár lábat látsz kikandikálni. Valószínűleg valaki ráhajtott a parkolóban beszélgetőkre. Innen könnyen megközelítheted a tábor többi helyszínét. SZÍNPAD, ZENESÁTOR, FOCIPÁLYA, TUSOLÓK, TORNATEREM. <font color='yellow'>Ott Fönt mutassa a nyíl, hogy azokra lehet kattyintani bammeg!</font><br/>Az épület tetején egy barátságis kiscica ugrándozik.</p>";
+site22.description = "<p>A parkolóban vagy. Ide hallatszik a tábor jövés-menése, zsongása. Táborozók pakolják ki-be cuccaikat az autókból. Érdeklődve pillantasz az egyik rendszámtáblára : JCVD ! Hmm ez már ismerős az útról, ez a barom száguldott el melletted. Az egyik autó alól viszont pár lábat látsz kikandikálni. Valószínűleg valaki ráhajtott a parkolóban beszélgetőkre. Innen könnyen megközelítheted a tábor többi helyszínét. SZÍNPAD, ZENESÁTOR, FOCIPÁLYA, TUSOLÓK, TORNATEREM. <font color='yellow'>Ott Fönt mutassa a nyíl, hogy azokra is lehet kattyintani bammeg!</font><br/>Az épület tetején egy barátságis kiscica ugrándozik.</p>";
 site22.openAction = function(){
 	rightpointer.style.display = "block";
 	openfield();
@@ -1207,6 +1207,8 @@ site150 = new Site("site150");
 site150.description = "<p>Megveted a talpad és bekészíted a LézerShuriken lövő Joystickot. A bejárat ekkor összeomlik és a tetőszerkezet is megremeg. Több tucat ember sikoltozik, ahogy leszakadnak a testrészeik, majd a szájuk is, így nem sikoltoznak tovább. Úgy érzed magad, mint egy kibaszott szuperhős.</p><p>Eddig eljutottál ebben a szar játékban, most nem fogod feladni, várjon rád bármi.</p><p>A tornaterem teteje recseg-ropog és a kivetítőnél egy dinoszaurusz dugja be a pofáját. Mintha csak egy megelevenedett játék lenne, egy rémálom 3D-s verziója. Rád tátja ocsmány, fél méteres fogszilánkokkal tűzdelt pofáját és szédítő hangorkán kíséretében felvisít, dögletes hússzagot lehelve magából. Elvira felsikít.<br/>- Ments meg, ments meg ! - csábosan izgeti magát, harisnyája felszakadt. </p>";
 site150.addOption("Odaszaladsz, hogy megmentsd Elvirát", function(){
 	jump(site151);
+site150.addOption("Elkezded szidni a dinoszauruszt", function(){
+	jump(site15);
 });
 
 site151 = new Site("site151");
