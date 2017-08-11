@@ -4,6 +4,8 @@ var sitedescription
 var options
 var inventory
 var places
+var leftpointer;
+var rightpointer;
 
 var tools = {};
 var sites = {};
@@ -187,5 +189,7 @@ function start(){
 	options = document.getElementById("options");
 	inventory = document.getElementById("inventory");
 	places = document.getElementById("places");
+	leftpointer = document.getElementById("leftpoint");
+	rightpointer = document.getElementById("rightpoint");
 	refresh();
 };

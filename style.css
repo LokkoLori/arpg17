@@ -70,3 +70,19 @@ b {
 .usetool{
 	color: yellow;
 }
+
+.pointer{
+	position: absolute;
+}
+
+#leftpoint {
+	top: 100px;
+	left: 380px;
+	display: none;
+}
+
+#rightpoint {
+	top: 140px;
+	left: 600px;
+	display: none;
+}
