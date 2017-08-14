@@ -1152,7 +1152,7 @@ site143.addOption("Visszatérsz a tornaterem egyéb részeibe nézelődni", func
 site143.addToolRelay("joystick", function(){
 	jump(site144);
 });
-site143.addToolRelay("LézetShurikenLövő-Joystick", function(){
+site143.addToolRelay("LézerShurikenLövő-Joystick", function(){
 	jump(site146);
 });
 
@@ -1176,7 +1176,7 @@ site145.addToolRelay("lézer", function(){
 });
 
 
-var lazershurikenlovojoystick = new Tool("LézetShurikenLövő-Joystick");
+var lazershurikenlovojoystick = new Tool("LézerShurikenLövő-Joystick");
 site146 = new Site("site146");
 site146.description = "<p>Fegyver kész ! - mondja az agy és kiad magából egy LézerShurikenlövő Joystickot ! Elteszed a hiperfegyvert.Ebben a pillanatban azonban óriási döndülés hallatszik az épületen kívülről !</p>";
 site146.openAction = function(){
